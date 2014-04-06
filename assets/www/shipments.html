@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta id="extViewportMeta" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+     
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/jquery.mobile-1.3.1.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+  </head>
+  <body>
+  <!--<div id="loading-image">
+          <img src="images/loading-old.gif" alt="Loading..." />
+        </div>-->
+        <form accept-charset="UTF-8" id="new_shipment">
+          <div style="margin:0;padding:0;display:inline">
+            <input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="DpG8kM+ZXG0GR71SKfbZfzeoCqWfipeiYBDNZ9kPLBk=" /></div>
+          <div data-role="page" id="demo-page1" data-url="demo-page1">
+          <div data-role="header" id="heading" class="topheader">
+              <a href="#left-panel"><i class='icon-reorder'></i></a>
+              <h1>New Shipment</h1>
+            </div><!-- /header -->
+            <div role="main" class="ui-content">
+             <ul data-role="listview" data-inset="true">
+              <fieldset>
+                <li data-role="fieldcontain">
+                  <label for="shipment_date_of_shipment_1i">Date of shipment</label>
+                  <input id="shipment_date_of_shipment_1i" name="shipment[date_of_shipment]" step="1" type="date">     
+                </li>
+                <li data-role="fieldcontain">
+                  <label for="shipment_number_of_pigs">Number of pigs</label>
+                  <input id="shipment_number_of_pigs" name="shipment[number_of_pigs]" step="1" type="number">
+                </li>
+                 <li data-role="fieldcontain">
+                  <label for="shipment_dead_on_arrival">Dead On Arrival</label>
+                  <input id="shipment_dead_on_arrival" name="shipment[dead_on_arrival]" step="1" type="number">
+                </li>                 
+                 <li data-role="fieldcontain">
+                  <label for="shipment_dead_within_day">Pig Supplier</label>
+                  <input id="shipment_dead_within_day" name="shipment[dead_within_day]" type="text">
+                </li>
+               </fieldset>
+                <button type="Submit" class="btn btn-labeled btn-primary">
+                  Submit
+                </button>
+              </ul>
+            </div>
+            <div data-role="panel" data-transition="slide"  id="left-panel">
+              <ul data-role='listview'>
+                <li data-role="list-divider" id="heading_menu">Menu</li>
+                <li><a href="#" data-transition="slide" onclick="db()" data-ajax='false' rel="external"><i class='icon-dashboard'></i> Dashboard</a></li>
+                <li><a href="inventory.html" data-transition="slide"  data-ajax='false' rel="external"><i class='icon-dashboard'></i> Inventory</a></li>
+                <li><a href="shipments.html" data-transition="slide"  data-ajax='false' rel="external"><i class='icon-dashboard'></i> Shipment</a></li>
+                <li><a href="#" data-ajoutax='false' data-transition="slide"  onclick="user_logout();" rel="external"><i class='icon-signout'></i> Logout</a></li>
+              </ul>
+             </div>
+          </div>
+        </form>   
+    <script type="text/javascript" src="cordova.js"></script>
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/jquery.mobile-1.3.2.min.js"></script>
+    <script src="js/nativedroid.script.js"></script>
+    <script src="js/authorize_page.js"></script>
+    <script src="js/page.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/bootstrap.touchspin.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+      function ind() {
+      //alert("ddd");
+      $("input[type='number']").TouchSpin({
+            min: 1,
+            max: 1000000000,
+            step: 1,
+            stepinterval: 50,
+            maxboostedstep: 10000000,
+            initval: 1
+            //prefix: '%'
+        });
+      }
+    });
+    </script>
+
+    
+  </body>
+</html>
+
