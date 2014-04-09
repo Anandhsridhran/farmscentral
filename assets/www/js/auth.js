@@ -9,26 +9,25 @@ $(function() {
   var first = window.localStorage.getItem('first_name');
   var last =  window.localStorage.getItem('last_name');
 
-
-
-
   if(token === undefined || token==null){
     console.log("login must")
-  }else if(role =="SiteManager"){
-          
-           window.location ="main_dashboard.html#demo-page2"
-        }
-        else{
-         
-          window.location ="main_dashboard.html"  
-        } 
+  }
+  else if(role =="HogOwner"){   
+    window.location ="main_dashboard.html"  
+  } 
+  else if(role =="SiteManager"){        
+    window.location ="main_dashboard.html#demo-page2"
+  }
+  else if(role =="BarnManager"){   
+    window.location ="main_dashboard.html#demo-page4"  
+  } 
 
   $('#new_user_session').submit(function(e) {
     $('#menu').css('background-color','#004A7A');
     //$('#menu').css('background-color','rgb(0,125,208)');   
     $.ajax({
       type: "POST",
-      url: 'http://farmcentral.softimum.com/user_sessions.json',
+      url: 'http://nano.amfnano.com/user_sessions.json',
       contentType: "application/x-www-form-urlencoded; charset=utf-8",
       dataType: "json",
       data: $(this).serialize(),
@@ -50,18 +49,20 @@ $(function() {
         window.localStorage.setItem('barn_id', data.barn_id);
         //alert(data.location_id);
         var role1 = window.localStorage.getItem('role');
-        if (role == "Admin"){
+        //alert(role1);
+        if (role1 == "HogOwner"){
+          //alert(role1);
           window.location ="main_dashboard.html"  
         }
-        else if(role =="SiteManager"){
-          //alert(role1);
+        else if(role1 =="SiteManager"){
+          // alert(role1);
           //alert(location);
            window.location ="main_dashboard.html#demo-page2"
         }
-        else{
-          //alert(role1);
-          window.location ="main_dashboard.html"  
-        } 
+        else if(role1 =="BarnManager"){
+          // alert(role1);
+          window.location ="main_dashboard.html#demo-page4"  
+        }
         return false;
       },
       error: function(data,status){

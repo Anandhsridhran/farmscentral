@@ -1,6 +1,5 @@
 $(document).ready(function(){
     
-    //$('body').append('<img id="loader" src="images/loading-old.gif" style="position: fixed;  margin: 20% 10%;">');
     
      var token = window.localStorage.getItem('login_token');
      var role = window.localStorage.getItem('role');
@@ -8,49 +7,27 @@ $(document).ready(function(){
      var last =  window.localStorage.getItem('last_name');
      var user = first +" "+ last ;
      //alert("farms");
-      if(role =="SiteManager"){
-        var farm = window.localStorage.getItem('farm');
-  
-    
-   
+    if(role =="SiteManager"){
+      var farm = window.localStorage.getItem('farm');
       $.ajax({
         type: "GET",
-        url: 'http://farmcentral.softimum.com/farms/'+farm+'/locations.json?user_credentials='+token,
+        url: 'http://nano.amfnano.com/farms/'+farm+'/locations.json?user_credentials='+token,
         dataType: "json",
         cache: false,
         success: function(data) {        
-         /*alert(data.system_status);
-         var status = data.system_status;
-         if(status == "OK"){
-          list  = []
-          $.each(data, function(x, v) {
-            list.push("<li><a href='#' data-transition='slide' data-id="+v.location_id+" data-location="+v.name+"><img src='../images/logo.png'>"+v.name+"</a></li>")
-              //list.push("<div data-role='collapsible' class='location_list' data-id="+v.location_id+" data-collapsed='true' data-theme='a'><h3>"+v.name+"</h3>")
-          });        
-          }
-          else{
-          list  = []
-          $.each(data, function(x, v) {
-            list.push("<li><a href='#' data-transition='slide' data-id="+v.location_id+" data-location="+v.name+"><img src='../images/mobile-logo.png'>"+v.name+"</a></li>")
-              //list.push("<div data-role='collapsible' class='location_list' data-id="+v.location_id+" data-collapsed='true' data-theme='a'><h3>"+v.name+"</h3>")
-          });   
-          }*/
           list  = []
           $.each(data, function(x, v) {
             list.push("<li><a href='#' data-transition='slide' data-id="+v.location_id+" data-location="+v.name+">"+v.name+"</a></li>")
-              //list.push("<div data-role='collapsible' class='location_list' data-id="+v.location_id+" data-collapsed='true' data-theme='a'><h3>"+v.name+"</h3>")
           });  
           $('#locations_list').append(list);         
            window.location ="#demo-page2";
           get_barns();
-          //$('[data-role=collapsible-set]').collapsibleset().trigger('create');
-
           $('#locations_list').listview('refresh');
           $('#db_hog2').text(user);
           return false;
         },
         error: function(data,status){
-          alert('Error in connection. Check your internet')
+          alert('No Data Found')
         },
 
         complete: function(data){
@@ -61,11 +38,11 @@ $(document).ready(function(){
           alert('Access denied')
         }
       });
-}
-      else{
+    }
+    else if(role =="HogOwner"){
     $.ajax({
       type: "GET",
-      url: 'http://farmcentral.softimum.com/farms.json?user_credentials='+token,
+      url: 'http://nano.amfnano.com/farms.json?user_credentials='+token,
       dataType: "json",
       cache: false,
       success: function(data) {
@@ -84,7 +61,7 @@ $(document).ready(function(){
         return false;
       },
       error: function(data,status){
-        alert('Error in connection. Check your internet')
+        alert('No data Found')
         
       },
 
@@ -99,7 +76,45 @@ $(document).ready(function(){
       }
 
     });
-    }   
+    }
+    else if(role =="BarnManager"){
+      var id = window.localStorage.getItem('barn_id');
+      window.localStorage.setItem('shipid', id);
+      var shipid =  window.localStorage.getItem('barn_id');
+      $('#db_hog4').text(user);
+       $.ajax({
+        type: "GET",
+        url: 'http://nano.amfnano.com/barns/'+id+'/last_reading.json?user_credentials='+token,
+        dataType: "json",
+        cache: false,
+        success: function(data) {        
+          console.log(data)
+          $('#humidity').text(data.humidity+'%');
+          $('#s_status').text(data.system_status);
+          $('#temp').text(data.temperatures[0].value+'F');
+          //$('#low_temp').text(data.temperatures[1].value+'F');
+          // $('#air').text(data.air_quality);
+          // $('#co').text(data.CO);
+          $('#ac').text(data.AC_power);
+          $('#db_barn').text(data.barn_name);
+          $('#last_up').text('Last update on-'+ data.reported_at);
+          window.location ="#demo-page4";
+          return false;
+        },
+        error: function(data,status){
+          alert('No Data Found')
+        },
+
+        complete: function(data){
+          // alert('completed')
+        },
+
+        denied: function(data){
+          alert('Access denied')
+        }
+      });
+
+    }  
   // GET Sites
  
 function get_locations(){
@@ -118,31 +133,27 @@ function get_locations(){
     //alert(farms);
       $.ajax({
         type: "GET",
-        url: 'http://farmcentral.softimum.com/farms/'+id+'/locations.json?user_credentials='+token,
+        url: 'http://nano.amfnano.com/farms/'+id+'/locations.json?user_credentials='+token,
         dataType: "json",
         cache: false,
         success: function(data) {        
-          //console.log(data);
-          //alert("got locations");
+         
          
           list  = []
           $.each(data, function(x, v) {
             list.push("<li><a href='#' data-transition='slide' data-id="+v.location_id+" data-location="+v.name+">"+v.name+"</a></li>")
-              //list.push("<div data-role='collapsible' class='location_list' data-id="+v.location_id+" data-collapsed='true' data-theme='a'><h3>"+v.name+"</h3>")
           });        
           $('#locations_list').append(list);         
            window.location ="#demo-page2";
           $('#db_hog2').text(user);
           $('#db_farm1').text(name);
-          
-          //$('[data-role=collapsible-set]').collapsibleset().trigger('create');
           get_barns();
           $('#locations_list').listview('refresh');
           
           return false;
         },
         error: function(data,status){
-          alert('Error in connection. Check your internet')
+          alert('No Data Found')
         },
 
         complete: function(data){
@@ -170,20 +181,24 @@ function get_barns(){
       $('#barns_list li:not(:first)').remove();   
         var $this = $(this),
         id = $(this).data('id');
+
         var name = $(this).data('location');
-        
       $.ajax({
         type: "GET",
-        url: 'http://farmcentral.softimum.com/locations/'+id+'/barns.json?user_credentials='+token,
+        url: 'http://nano.amfnano.com/locations/'+id+'/barns.json?user_credentials='+token,
         dataType: "json",
         cache: false,
-        success: function(data) {                            
+        success: function(data) {                  
           list  = []
           $.each(data, function(x, v) {
-              list.push("<li><a href='#'data-transition='slide' data-id="+v.barn_id+">"+v.name+"</a></li>")
+            if(v.system_status == "OK"){
+              var img = "images/okie.png";
+            }
+            else{
+              var img = "images/fire3.png";
+            }
+              list.push("<li><a href='#'data-transition='slide' data-id="+v.barn_id+"><img id='img1' src="+img+"></img>"+v.name+"</a></li>")
           });        
-          //$this.append("<ul data-role='listview' id='last_readings'>"+list+"</ul>");          
-          //$('[data-role=collapsible]').collapsibleset().trigger('create');
            $('#barns_list').append(list);         
           window.location ="#demo-page3";
            get_reading();
@@ -194,7 +209,7 @@ function get_barns(){
           return false;
         },
         error: function(data,status){
-          alert('Error in connection. Check your internet')
+          alert('No Data Found')
         },
 
         complete: function(data){
@@ -215,28 +230,37 @@ function get_barns(){
      var last =  window.localStorage.getItem('last_name');
      var user = first +" "+ last ;
     var id = $(this).data('id');
-    
+    window.localStorage.setItem('shipid', id);
+    var shipid =  window.localStorage.getItem('shipid');
     
       $.ajax({
         type: "GET",
-        url: 'http://farmcentral.softimum.com/barns/'+id+'/last_reading.json?user_credentials='+token,
+        url: 'http://nano.amfnano.com/barns/'+id+'/last_reading.json?user_credentials='+token,
         dataType: "json",
         cache: false,
         success: function(data) {        
-          console.log(data)
-         $('#humidity').text(data.humidity+'%');
-         $('#high_temp').text(data.temperatures[0].value+'F');
-         $('#low_temp').text(data.temperatures[1].value)+'F';
-         $('#air').text(data.air_quality);
-         $('#water').text(data.water_total+"ltrs");
-         $('#db_barn').text(data.barn_name);
+          console.log(data);
+          $('#humidity').text(data.humidity+'%');
+          $('#s_status').text(data.system_status);
+          $('#temp').text(data.temperatures[0].value+'F');
+          //$('#low_temp').text(data.temperatures[1].value+'F');
+          // $('#air').text(data.air_quality);
+          // $('#co').text(data.CO);
+          $('#ac').text(data.AC_power);
+          $('#last_up').text('Last update on-'+ data.reported_at);
+          $('#db_barn').text(data.barn_name);
           $('#db_hog4').text(user);
           window.location ="#demo-page4";
-         
+           if(data.system_status == "OK"){
+            $("#statusimg").attr("src", "images/ok1.png");
+          }
+          else{
+            $("#statusimg").attr("src", "images/fire1.png")
+          }
           return false;
         },
         error: function(data,status){
-          alert('Error in connection. Check your internet')
+          alert('No Data Found')
         },
 
         complete: function(data){
