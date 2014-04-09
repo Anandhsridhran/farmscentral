@@ -197,7 +197,7 @@ function get_barns(){
             else{
               var img = "images/fire3.png";
             }
-              list.push("<li><a href='#'data-transition='slide' data-id="+v.barn_id+"><img id='img1' src="+img+"></img>"+v.name+"</a></li>")
+              list.push("<li><a href='#'data-transition='slide' data-id="+v.barn_id+">"+v.name+"</a></li>")
           });        
            $('#barns_list').append(list);         
           window.location ="#demo-page3";
