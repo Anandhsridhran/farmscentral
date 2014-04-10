@@ -8,12 +8,9 @@ $(document).ready(function(){
 });
 //home.html
 function delayShow() {
-  var secs = 50;
+  var secs = 20;
   setTimeout('jQuery("body").css("visibility","visible");', secs);
 }
-
-
-
 
 function user_logout() {
         window.localStorage.removeItem('login_token');
@@ -148,35 +145,33 @@ $(function() {
       var total_pigs = $('#total_pigs').val();
       var total_doa = $('#shipment_dead_on_arrival').val();
       var pig_supplier = $('#pig_supplier').val();
-      alert(shipment_date + shipid + total_pigs + total_doa + pig_supplier);
+      //alert(shipment_date + shipid + total_pigs + total_doa + pig_supplier);
        var bookData = {
-                 "barn_id": 0,
-                 "shipment_date": "32334833425543",
-                 "total_pigs": 0,
-                 "total_doa":0,
-                 "pig_supplier":"test"
+                 "barn_id": shipid,
+                 "shipment_date": shipment_date,
+                 "total_pigs": total_pigs,
+                 "total_doa":total_doa,
+                 "pig_supplier":pig_supplier
 
              };
       $.ajax({
       type: "POST",
       url: 'http://farmcentral.softimum.com/shipments.json?user_credentials='+token,
-      //url: 'test.json',
-      //data: "{'barn_id':"+ shipid +",'shipment_date':" + shipment_date + "}",
-      //data: $(this).serialize(),
-      contentType: "application/x-www-form-urlencoded; charset=utf-8",
-      dataType: "jsonp",
-      data: "{'barn_id':" + shipid + ",'shipment_date':'" + shipment_date + "','total_pigs':" + total_pigs + ",'total_doa':" + total_doa + ",'pig_supplier':'" + pig_supplier + "'}",
-     // data:bookData,
+      crossDomain: true,
+      contentType: "application/json; charset=utf-8",
+      data: JSON.stringify(bookData),
+      dataType: "json",
       cache: false,
       success: function(data) {        
-        alert(JSON.stringify(data));
+        //alert(JSON.stringify(data));
         alert("Shipment created successfully");
-        $('#new_shipment')[0].reset();
         window.localStorage.removeItem('shipid');
-        //return false
+        db();
+        $('#new_shipment')[0].reset();
+        return false
       },
       error: function(data,status){
-        alert(JSON.stringify(data));
+        //alert(JSON.stringify(data));
         alert(status);
       },
 
@@ -187,22 +182,45 @@ $(function() {
       denied: function(data){
             alert('Access denied')
       }
-    });
-     // e.preventDefault();
-     // return false    
+    });   
   });
 
 
   $('#new_report').on("submit", function(){        
+      var shipid =  window.localStorage.getItem('shipid');
+      var report_date = $('#report_date').val();
+      var total_pig_deaths = $('#report_number_of_pig_deaths').val();
+      var cause_of_death = $('#report_death_reason').val();
+      var total_pigs_treated = $('#report_number_of_pigs_treated').val();
+      var medicine_given = $('#report_name_of_product_given').val();
+      var dosage = $('#report_amount_given').val();
+      var how_administered = $('#report_route_of_admin').val();
+      var user_initials = $('#report_initials').val();
+      var bookData = {
+                 "barn_id": shipid,
+                 "report_date": report_date,
+                 "total_pig_deaths": total_pig_deaths,
+                 "cause_of_death":cause_of_death,
+                 "total_pigs_treated":total_pigs_treated,
+                 "medicine_given":medicine_given,
+                 "dosage":dosage,
+                 "how_administered":how_administered,
+                 "user_initials":user_initials
+             };
       $.ajax({
       type: "POST",
-      url: 'http://farms.herokuapp.com/reports.json?user_credentials='+token,
-      data: $(this).serialize(),
+      url: 'http://farmcentral.softimum.com/inventory_reports.json?user_credentials='+token,
+      crossDomain: true,
+      contentType: "application/json; charset=utf-8",
+      data: JSON.stringify(bookData),
       dataType: "json",
       cache: false,
-      success: function(data) {        
-        $('#new_report')[0].reset()
-        alert("Inventory created successfully")
+      success: function(data) {  
+        //alert(JSON.stringify(data));      
+        window.localStorage.removeItem('shipid');
+        alert("Inventory created successfully");
+        db();
+        $('#new_report')[0].reset();
         return false
       },
       error: function(data,status){
@@ -233,7 +251,64 @@ function db(){
     window.location ="main_dashboard.html#demo-page4"  
   }
 }
+
 function ship(){
+  var token = window.localStorage.getItem('login_token');
   var shipid =  window.localStorage.getItem('shipid');
-  alert(shipid);
+  window.location ='shipments.html';
+  // alert(shipid);
+  //   $.ajax({
+  //       type: "GET",
+  //       url: 'http://farmcentral.softimum.com/barns/'+shipid+'/last_shipment.json?user_credentials='+token,
+  //       crossDomain: true,
+  //       success: function(data) {        
+  //         alert(JSON.stringify(data));
+  //         window.location ='shipments.html'
+  //       },
+  //       error: function(data,status){
+  //         alert(JSON.stringify(data));
+  //         alert(JSON.stringify(status));
+  //         window.location ='shipments.html'
+  //       },
+
+  //       complete: function(data){
+  //         // alert('completed')
+  //       },
+
+  //       denied: function(data){
+  //         alert('Access denied');
+  //       }
+  //     });
+    
+}
+function inven(){
+  var token = window.localStorage.getItem('login_token');
+  var shipid =  window.localStorage.getItem('shipid');
+  window.location ='inventory.html';
+  // alert(shipid);
+  // $.ajax({
+  //       type: "GET",
+  //       url: 'http://farmcentral.softimum.com/barns/'+shipid+'/last_inventory_report.json?user_credentials='+token,
+  //       crossDomain: true,
+  //       success: function(data) {        
+         
+  //         alert(JSON.stringify(data));
+          
+  //         window.location ='inventory.html'
+
+          
+  //       },
+  //       error: function(data,status){
+  //         alert(JSON.stringify(data));
+  //         window.location ='inventory.html'
+  //       },
+
+  //       complete: function(data){
+  //         // alert('completed')
+  //       },
+
+  //       denied: function(data){
+  //         alert('Access denied');
+  //       }
+  //     });
 }

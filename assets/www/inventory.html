@@ -19,6 +19,15 @@
         <div data-role="header" id="heading" class="topheader">
           <a href="#left-panel"><i class='icon-reorder'></i></a>
           <h1>Daily Inventory</h1>
+          <!-- <div data-role="navbar">
+            <ul style="color:black">
+              <li>Date <span id="in_date" class="one"> </span></li>
+              <li>Inventory <span id="in_inv"> </span></li>
+              <li>Pig Deaths <span id="in_death"> </span></li>
+              <li>Sick Pigs <span id="in_sick"> </span></li>
+              <li>Initials <span id="in_init"> </span></li>
+            </ul>
+          </div> -->
         </div><!-- /header -->
       
         <div role="main" class="ui-content">
@@ -72,8 +81,6 @@
               <ul data-role='listview'>
                 <li data-role="list-divider" id="heading_menu">Menu</li>
                 <li><a href="#" data-transition="slide" onclick="db()" data-ajax='false' rel="external"><i class='icon-dashboard'></i> Dashboard</a></li>
-                <li><a href="inventory.html" data-transition="slide"  data-ajax='false' rel="external"><i class='icon-dashboard'></i> Inventory</a></li>
-                <li><a href="shipments.html" data-transition="slide"  data-ajax='false' rel="external"><i class='icon-dashboard'></i> Shipment</a></li>
                 <li><a href="#" data-ajoutax='false' data-transition="slide"  onclick="user_logout();" rel="external"><i class='icon-signout'></i> Logout</a></li>
               </ul>
              </div>
@@ -120,8 +127,6 @@
               <ul data-role='listview'>
                 <li data-role="list-divider" id="heading_menu">Menu</li>
                 <li><a href="#" data-transition="slide" onclick="db()" data-ajax='false' rel="external"><i class='icon-dashboard'></i> Dashboard</a></li>
-                <li><a href="inventory.html" data-transition="slide"  data-ajax='false' rel="external"><i class='icon-dashboard'></i> Inventory</a></li>
-                <li><a href="shipments.html" data-transition="slide"  data-ajax='false' rel="external"><i class='icon-dashboard'></i> Shipment</a></li>
                 <li><a href="#" data-ajoutax='false' data-transition="slide"  onclick="user_logout();" rel="external"><i class='icon-signout'></i> Logout</a></li>
               </ul>
              </div>
@@ -161,8 +166,6 @@
               <ul data-role='listview'>
                 <li data-role="list-divider" id="heading_menu">Menu</li>
                 <li><a href="#" data-transition="slide" onclick="db()" data-ajax='false' rel="external"><i class='icon-dashboard'></i> Dashboard</a></li>
-                <li><a href="inventory.html" data-transition="slide"  data-ajax='false' rel="external"><i class='icon-dashboard'></i> Inventory</a></li>
-                <li><a href="shipments.html" data-transition="slide"  data-ajax='false' rel="external"><i class='icon-dashboard'></i> Shipment</a></li>
                 <li><a href="#" data-ajoutax='false' data-transition="slide"  onclick="user_logout();" rel="external"><i class='icon-signout'></i> Logout</a></li>
               </ul>
              </div>
@@ -218,8 +221,6 @@
               <ul data-role='listview'>
                 <li data-role="list-divider" id="heading_menu">Menu</li>
                 <li><a href="#" data-transition="slide" onclick="db()" data-ajax='false' rel="external"><i class='icon-dashboard'></i> Dashboard</a></li>
-                <li><a href="inventory.html" data-transition="slide"  data-ajax='false' rel="external"><i class='icon-dashboard'></i> Inventory</a></li>
-                <li><a href="shipments.html" data-transition="slide"  data-ajax='false' rel="external"><i class='icon-dashboard'></i> Shipment</a></li>
                 <li><a href="#" data-ajoutax='false' data-transition="slide"  onclick="user_logout();" rel="external"><i class='icon-signout'></i> Logout</a></li>
               </ul>
              </div>
@@ -248,8 +249,6 @@
               <ul data-role='listview'>
                 <li data-role="list-divider" id="heading_menu">Menu</li>
                 <li><a href="#" data-transition="slide" onclick="db()" data-ajax='false' rel="external"><i class='icon-dashboard'></i> Dashboard</a></li>
-                <li><a href="inventory.html" data-transition="slide"  data-ajax='false' rel="external"><i class='icon-dashboard'></i> Inventory</a></li>
-                <li><a href="shipments.html" data-transition="slide"  data-ajax='false' rel="external"><i class='icon-dashboard'></i> Shipment</a></li>
                 <li><a href="#" data-ajoutax='false' data-transition="slide"  onclick="user_logout();" rel="external"><i class='icon-signout'></i> Logout</a></li>
               </ul>
              </div>
@@ -279,8 +278,6 @@
               <ul data-role='listview'>
                 <li data-role="list-divider" id="heading_menu">Menu</li>
                 <li><a href="#" data-transition="slide" onclick="db()" data-ajax='false' rel="external"><i class='icon-dashboard'></i> Dashboard</a></li>
-                <li><a href="inventory.html" data-transition="slide"  data-ajax='false' rel="external"><i class='icon-dashboard'></i> Inventory</a></li>
-                <li><a href="shipments.html" data-transition="slide"  data-ajax='false' rel="external"><i class='icon-dashboard'></i> Shipment</a></li>
                 <li><a href="#" data-ajoutax='false' data-transition="slide"  onclick="user_logout();" rel="external"><i class='icon-signout'></i> Logout</a></li>
               </ul>
              </div>
@@ -289,6 +286,7 @@
             <div data-role="header" id="heading" class="topheader">
               <a href="#left-panel" data-transition="slide"><i class='icon-reorder'></i></a>
               <h1>Daily Inventory</h1>
+
             </div>
             <div role="main" class="ui-content">
               <ul data-role="listview" data-inset="true">
@@ -310,8 +308,6 @@
               <ul data-role='listview'>
                 <li data-role="list-divider" id="heading_menu">Menu</li>
                 <li><a href="#" data-transition="slide" onclick="db()" data-ajax='false' rel="external"><i class='icon-dashboard'></i> Dashboard</a></li>
-                <li><a href="inventory.html" data-transition="slide"  data-ajax='false' rel="external"><i class='icon-dashboard'></i> Inventory</a></li>
-                <li><a href="shipments.html" data-transition="slide"  data-ajax='false' rel="external"><i class='icon-dashboard'></i> Shipment</a></li>
                 <li><a href="#" data-ajoutax='false' data-transition="slide"  onclick="user_logout();" rel="external"><i class='icon-signout'></i> Logout</a></li>
               </ul>
              </div>
@@ -331,12 +327,9 @@
         var today = new Date();   
         var dd = today.getDate();
         var mm = today.getMonth()+1; //January is 0!
-
         var yyyy = today.getFullYear();    
-
-        $('#report_date').val(dd + '-' + mm + '-' + yyyy);    
-           
-});
+        $('#report_date').val(dd + '-' + mm + '-' + yyyy);        
+        });
     </script>
    </body>
 </html>

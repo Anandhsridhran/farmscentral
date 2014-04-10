@@ -48,8 +48,6 @@
               <ul data-role='listview'>
                 <li data-role="list-divider" id="heading_menu">Menu</li>
                 <li><a href="#" data-transition="slide" onclick="db()" data-ajax='false' rel="external"><i class='icon-dashboard'></i> Dashboard</a></li>
-                <li><a href="inventory.html" data-transition="slide"  data-ajax='false' rel="external"><i class='icon-dashboard'></i> Inventory</a></li>
-                <li><a href="shipments.html" data-transition="slide"  data-ajax='false' rel="external"><i class='icon-dashboard'></i> Shipment</a></li>
                 <li><a href="#" data-ajoutax='false' data-transition="slide"  onclick="user_logout();" rel="external"><i class='icon-signout'></i> Logout</a></li>
               </ul>
              </div>
@@ -64,6 +62,14 @@
     <script src="js/main.js"></script>
     <script src="js/bootstrap.touchspin.js"></script>
     <script type="text/javascript">
+      $(document).on('pagebeforeshow', '#demo-page1', function(){ 
+    
+        var today = new Date();   
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
+        var yyyy = today.getFullYear();    
+        $('#shipment_date').val(dd + '-' + mm + '-' + yyyy);        
+        });
     //   $(document).ready(function(){
     //   function ind() {
     //   //alert("ddd");
@@ -79,8 +85,6 @@
     //   }
     // });
     </script>
-
-    
   </body>
 </html>
 
