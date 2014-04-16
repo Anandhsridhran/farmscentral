@@ -15,14 +15,15 @@
 
     <div data-role="header" id="heading" >
         <a href="#left-panel"><i class='icon-reorder'></i></a>
-        <div style="text-align:center; padding-top: 2px;">
+        <div style="text-align:center; padding-top: 2px;"> 
             <img src="images/mobile-logo-2.png" />
         </div>
-    </div><!-- /header -->
-    	<div role="main" class="ui-content">
-       <div class="detail_db">
+         <div class="detail_db">
           Hog Owner -<span id="db_hog1" class="span_db"></span> 
         </div>
+    </div><!-- /header -->
+    	<div role="main" class="ui-content" style="margin-top: 10px;">
+      
     	<ul data-role="listview" data-inset="true" id="admin_farms">
     	  <li data-role="list-divider">Farms List</li>
     	</ul>
@@ -41,12 +42,13 @@
         <div style="text-align:center; padding-top: 2px;">
             <img src="images/mobile-logo-2.png" />
         </div>
-    </div><!-- /header -->
-    <div role="main" class="ui-content" id ="farm_locations">
-     <div class="detail_db">
-          <span id="db_farm1" class="span_db"></span> <br/>
+        <div class="detail_db">
+          <span id="db_farm1" class="span_db"></span>
           Hog Owner -<span id="db_hog2" class="span_db"></span> 
-    </div>
+        </div>
+    </div><!-- /header -->
+    <div role="main" class="ui-content" id ="farm_locations" style="margin-top: 10px;">
+     
         <ul data-role="listview" data-inset="true" id="locations_list">
         <li data-role="list-divider">Locations List</li>
       </ul>
@@ -66,12 +68,12 @@
         <div style="text-align:center; padding-top: 2px;">
             <img src="images/mobile-logo-2.png" />
         </div>
-    </div><!-- /header -->
-      <div role="main" class="ui-content" id="farms_barns">
-      <div class="detail_db">
-       Hog Owner -<span id="db_hog3" class="span_db"></span><br/>
+        <div class="detail_db">
+       Hog Owner -<span id="db_hog3" class="span_db"></span>
        <span id="db_location" class="span_db"></span>   
       </div>
+    </div><!-- /header -->
+      <div role="main" class="ui-content" id="farms_barns" style="margin-top: 10px;">
       <ul data-role="listview" data-inset="true" id="barns_list">
         <li data-role="list-divider">Barns List</li>
       </ul>
@@ -83,80 +85,88 @@
           <li><a href="#" data-ajoutax='false' data-transition="slide"  onclick="user_logout();" rel="external"><i class='icon-signout'></i> Logout</a></li>
       </ul>
     </div>
-</div>
-<div data-role="page" id="demo-page4" data-url="demo-page4">
-    <div data-role="header" id="heading" >
-        <a href="#left-panel"><i class='icon-reorder'></i></a>
-        <div style="text-align:center; padding-top: 2px;">
-            <img src="images/mobile-logo-2.png" />
-        </div>
-    </div><!-- /header -->
-    <div role="main" class="ui-content">
-    <div class="detail_db">
-      Hog Owner -<span id="db_hog4" class="span_db"></span> <br/>
-      <!-- Site Name -<span id="db_site" class="span_db"></span><br/>-->
-      Barn Name -<span id="db_barn" class="span_db"></span>
-    </div>
-      <div onclick="inven()">
-        <div style="width: 45%; float: left;  margin-right: 25px;"> 
-          <div class="boxdiv">
-            <img src="images/1-Daily-icon.png" />
-            <span class="boxtext">Daily Inventory</span>
-          </div>
-        </div>
+  </div>
+  <div data-role="page" id="demo-page4" data-url="demo-page4"style="background: url(images/Systems.png);background-repeat: no-repeat; background-size:100% 100%;" >
+  <div data-role="header" id="head1" style="background: url(images/Topbg.png);background-repeat: repeat;" >
+    <div style="width:100%; float:left;">
+        <span style="font-size:30px; color:white; font-family:'Open Sans' sans-serif; font-weight:bold;">Farm Central</span>
+    </div>   
+  </div><!-- /header -->
+  <div role="main" class="ui-content">
+    <div id="box1" style="height:170px; padding:10px;">
+      <div style="width:100%; float:left;">
+        <span style="font-size:25px; color:black; font-family:'Open Sans' sans-serif; font-weight:bold; float: left; width:100%;">Temperature</span>
+        <span style="font-size:50px; color:white; font-family:'Open Sans' sans-serif; font-weight:bold; float: left; width:100%; text-shadow: 1px 1px black;" id="temp">23&#176;F</span>
+        <img src="images/image-1.png" style="float:left; width:40%;" />
       </div>
-      <div onclick="ship()">
-     <!--  <div onclick="ship()"> -->
-      <input type="hidden" id="barnship">
-        <div style="width: 45%; float: left;">
-          <div class="boxdiv">
-            <img src="images/2-new-shipment-icon.png" />
-            <span class="boxtext">New Shipment</span>      
-          </div>
-        </div>
-      </div>
-      <br/>
-    <div data-role="fieldcontain" class="ui-field-contain ui-body ">
-        <div id="watbox" class="dashdivbox">
-            <img id="statusimg" src="images/fire1.png" style="padding: 6px;" />
-            <span class="title-1">System Status</span>
-            <span class="title-2" id="s_status" style="font-size: xx-large;">OK</span>
-        </div>
-    </div>
-      
-    <div data-role="fieldcontain" class="ui-field-contain ui-body ">        
-        <div id="tempbox" class="dashdivbox">
-            <img src="images/temp-image-1.png" style="padding: 6px;" />
-            <span class="title-1">Temperature-1</span>
-            <span class="title-2" id="temp">0 F</span>
-        </div>
     </div>
 
-    <div data-role="fieldcontain" class="ui-field-contain ui-body ">
-        <div id="humbox" class="dashdivbox">
-            <img src="images/humudity-image-1.png" style="padding: 6px;" />
-            <span class="title-1">Humudity</span>
-            <span class="title-2" id="humidity" style="font-size: xx-large;">0%</span>
+
+    <div id="box2" style="height:225px; padding:5px;">
+      <div style="width:100%; float:left;">
+        <div id="sbox1" style="border-top:1px solid white; width:165px; height:60px; border-bottom:1px solid white; float:right;background: url(images/box-bg.png);background-repeat: repeat;">
+        <div style="width:66%; float:left;">
+          <span style="font-size:15px; color:white; font-family:'Open Sans' sans-serif; font-weight:normal; float:left; width: 100%;" >System Status</span>
+           <span style="font-size:30px; color:white; font-family:'Open Sans' sans-serif; font-weight:bold; float:left; width: 100%;" id="s_status">OK</span>
         </div>
-    </div>
-    <div data-role="fieldcontain" class="ui-field-contain ui-body ">
-        <div id="watbox" class="dashdivbox">
-            <img src="images/power1.png" style="padding: 6px;" />
-            <span class="title-1">AC power</span>
-            <span class="title-2" id="ac" style="font-size: xx-large;">OK</span>
+        <div style="width:30%; float:left;">
+          <img src="images/s-box-image-1.png" style="width:80%;" />
         </div>
-    </div>
-    <p id="last_up"></p> 
-        
-    </div><!-- /content -->
-    <div data-role="panel" data-transition="slide"  id="left-panel">
-      <ul data-role='listview'>
-          <li data-role="list-divider" id="heading_menu">Menu</li>
-          <li><a href="#" data-transition="slide" onclick="db()" data-ajax='false' rel="external"><i class='icon-dashboard'></i> Dashboard</a></li>
-          <li><a href="#" data-ajoutax='false' data-transition="slide"  onclick="user_logout();" rel="external"><i class='icon-signout'></i> Logout</a></li>
-      </ul>
+        </div>
+      </div>
+      <div style="width:100%; float:left;">
+        <div id="sbox2" style="width:165px; height:60px; border-bottom:1px solid white; float:right; background: url(images/box-bg.png);background-repeat: repeat;">
+          <div style="width:66%; float:left;">
+            <span style="font-size:15px; color:white; font-family:'Open Sans' sans-serif; font-weight:normal; float:left; width: 100%;">Humidity</span>
+            <span style="font-size:30px; color:white; font-family:'Open Sans' sans-serif; font-weight:bold; float:left; width: 100%;" id="humidity">43%</span>
+          </div>
+          <div style="width:30%; float:left;">
+            <img src="images/s-box-image-2.png" style="width:80%;" />
+          </div>
+        </div>          
+      </div>
+      <div style="width:100%; float:left;">
+        <div id="sbox3" style="width:165px; height:60px; border-bottom:1px solid white; float:right; background: url(images/box-bg.png);background-repeat: repeat;">
+           <div style="width:66%; float:left;">
+              <span style="font-size:15px; color:white; font-family:'Open Sans' sans-serif; font-weight:normal; float:left; width: 100%;">AC Power</span>
+              <span style="font-size:30px; color:white; font-family:'Open Sans' sans-serif; font-weight:bold; float:left; width: 100%;" id="ac">OK</span>
+            </div>
+            <div style="width:30%; float:left;"> 
+              <img src="images/s-box-image-3.png" style="width:80%;" />
+            </div>
+          </div>
+        </div>
+        <div style="width:100%; float:left;">
+          <div id="sbox4" style="width:165px; height:60px; border-bottom:1px solid white; float:right; background: url(images/box-bg.png);background-repeat: repeat;">
+           <div style="width:66%; float:left;">
+              <span style="font-size:15px; color:white; font-family:'Open Sans' sans-serif; font-weight:normal; float:left; width: 100%;">Events</span>
+              <span style="font-size:15px; color:white; font-family:'Open Sans' sans-serif; font-weight:bold; float:left; width: 100%;" id="events">Water level Raised</span>
+            </div>
+            <div style="width:30%; float:left;"> 
+              <img src="images/s-box-image-4.png" style="width:80%;" />
+            </div>
+          </div>
+        </div>                   
+      </div>
+    <div >
     </div>
   </div>
+  <div data-role="footer" id="foot" data-position="fixed" style="background: url(images/Topbg.png);background-repeat: repeat;" >
+    <div style="width:25%; float:left; text-align:center;" onclick="db()">
+                <a href="#"><img src="images/footer-image-1.png" style="height:38px;" /></a>
+                </div>
+                <div style="width:25%; float:left; text-align:center;" onclick="inven()">
+                <a href="#"><img src="images/footer-image-2.png" style="height:38px;" /></a>
+                </div>
+                <div style="width:25%; float:left; text-align:center;" onclick="ship()">
+                <a href="#"><img src="images/footer-image-3.png" style="height:38px;" /></a>
+                </div>
+                <div style="width:25%; float:left; text-align:center;" onclick="user_logout();">
+                <a href="#"><img src="images/signout.png" style="height:38px;" /></a>
+                </div>       
+     
+  </div>
+    
   </div>
 
     <script type="text/javascript" src="cordova.js"></script> 

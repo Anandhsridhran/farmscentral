@@ -65,8 +65,8 @@ function reason(){
   var num = $('#report_number_of_pig_deaths').val();
   //alert(num);
   $( "#reasons" ).empty();
-  var j=2;
-  for (i = 0; i < num-1; i++) {
+  var j=1;
+  for (i = 0; i < num; i++) {
   var c = "Cause of Death for Pig" + j;
    var data = {
       'foo': 'Belly Rupture',
@@ -81,7 +81,8 @@ function reason(){
       'foo10': 'Hematoma Ear',
       'foo11': 'Euthanized'
     }
-    var s = $('<br>'+ c + '</br><select />');
+    var id = "caused"+j;
+    var s = $('<br>'+ c + '</br><select id='+id+' />');
     var d = "";
     for(var val in data) {   
       d +=  $('<option />', {value: val, text: data[val]}).appendTo(s);
@@ -98,10 +99,12 @@ function treat(){
   $( "#medicine" ).empty();
   $( "#dosage" ).empty();
   $( "#adminis" ).empty();
-  var j=2;
-  for (i = 0; i < a-1; i++) {
+  var j=1;
+  for (i = 0; i < a; i++) {
+  var id = "inven_med"+j;
   var m1 = "Name of medicine given for pig" + j;
-  var m2 = $('<p>'+ m1 + '</p><input type="text" /><br></br>');
+  var m2 = $('<p>'+ m1 + '</p><input type="text" id='+id+' /><br></br>');
+  //alert(id);
   m2.appendTo('#medicine');
   $('[type="text"]').textinput(); 
   j= j+1;
@@ -109,11 +112,14 @@ function treat(){
 }
 function demo5(){
    $( "#dosage" ).empty();
-  var j=2;
+  var j=1;
+  // var name = $('#inven_med1').val();
+  // alert(name);
   var a = $('#report_number_of_pigs_treated').val();
-  for (i = 0; i < a-1; i++) {
+  for (i = 0; i < a; i++) {
+  var id = "inven_dos"+j;  
   var d1 = "Dosage Amount for pig" + j;
-  var d2 = $('<p>'+ d1 + '</p><input type="text" /><br></br>');
+  var d2 = $('<p>'+ d1 + '</p><input type="text" id='+id+' /><br></br>');
   d2.appendTo('#dosage');
   $('[type="text"]').textinput();
   j= j+1;
@@ -122,12 +128,12 @@ function demo5(){
 }
 function demo6(){
   $( "#adminis" ).empty();
-  var j=2;
+  var j=1;
   var a = $('#report_number_of_pigs_treated').val();
-  //alert(a);
-  for (i = 0; i < a-1; i++) {
+  for (i = 0; i < a; i++) {
+    var id = "inven_adm"+j;  
     var h1 ="How Adminstered for Pig" + j;
-    var h2 = $('<p>'+ h1 + '</p><input type="text" /><br></br>');
+    var h2 = $('<p>'+ h1 + '</p><input type="text" id='+id+' /><br></br>');
     h2.appendTo('#adminis');
     $('[type="text"]').textinput();
     j= j+1;
@@ -156,7 +162,7 @@ $(function() {
              };
       $.ajax({
       type: "POST",
-      url: 'http://farmcentral.softimum.com/shipments.json?user_credentials='+token,
+      url: 'http://nano.amfnano.com/shipments.json?user_credentials='+token,
       crossDomain: true,
       contentType: "application/json; charset=utf-8",
       data: JSON.stringify(bookData),
@@ -190,33 +196,64 @@ $(function() {
       var shipid =  window.localStorage.getItem('shipid');
       var report_date = $('#report_date').val();
       var total_pig_deaths = $('#report_number_of_pig_deaths').val();
-      var cause_of_death = $('#report_death_reason').val();
+      var td = total_pig_deaths;
+      var pig_deaths_attributes = [];
+      var n =1;
+      for (i = 0; i < td; i++) {
+        var idtd = "caused"+n;
+        pig_deaths_attributes.push('{cause:"'+idtd+'",count:'+td+'}');
+        n = n+1;
+      }
+      // var cause_of_death = $('#report_death_reason').val();
       var total_pigs_treated = $('#report_number_of_pigs_treated').val();
-      var medicine_given = $('#report_name_of_product_given').val();
-      var dosage = $('#report_amount_given').val();
-      var how_administered = $('#report_route_of_admin').val();
+      // var medicine_given = $('#report_name_of_product_given').val();
+      // var dosage = $('#report_amount_given').val();
+      // var how_administered = $('#report_route_of_admin').val();
       var user_initials = $('#report_initials').val();
+      var b = total_pigs_treated;
+      var c = 1;
+      var pigt = "";
+      var pig_treatments = [];
+      for (i = 0; i < b; i++) {
+        var medic= "inven_med"+c;
+        var inven_medic =$("#"+medic).val();
+        var inven_dosage =$("#inven_dos"+c).val(); 
+        var inven_admin =$("#inven_adm"+c).val();
+        // pigt += {"medicine_given":inven_medic, "count": c, "dosage": inven_dosage , "how_administered":inven_admin };
+         pig_treatments.push('{medicine_given:"'+inven_medic+'",count:'+c+',dosage:"'+inven_dosage+'",how_administered:"'+inven_admin+'"}');
+        c = c + 1;
+        //alert(inven_medic);
+      }
+      
+      // var pig_treatments1 = JSON.stringify(pig_treatments);
+      // alert(pig_treatments);
+      // alert(pig_treatments1);
       var bookData = {
                  "barn_id": shipid,
                  "report_date": report_date,
-                 "total_pig_deaths": total_pig_deaths,
-                 "cause_of_death":cause_of_death,
+                 "user_initials":user_initials,
+                 // "total_pig_deaths": total_pig_deaths,
+                 // "cause_of_death":cause_of_death,
+                 "pig_deaths_attributes":pig_deaths_attributes,
                  "total_pigs_treated":total_pigs_treated,
-                 "medicine_given":medicine_given,
-                 "dosage":dosage,
-                 "how_administered":how_administered,
-                 "user_initials":user_initials
+                 // "medicine_given":medicine_given,
+                 // "dosage":dosage,
+                 // "how_administered":how_administered,
+                 "pig_treatments" :pig_treatments
              };
+       alert(JSON.stringify(bookData));    
+       alert(bookData);
       $.ajax({
       type: "POST",
-      url: 'http://farmcentral.softimum.com/inventory_reports.json?user_credentials='+token,
+      url: 'http://farmcentral.softimum.com/inventory_reports.json?user_credentials=RRFy8ulfERw5wCjtwit',
       crossDomain: true,
       contentType: "application/json; charset=utf-8",
       data: JSON.stringify(bookData),
+      // data: bookData, 
       dataType: "json",
       cache: false,
       success: function(data) {  
-        //alert(JSON.stringify(data));      
+        alert(JSON.stringify(data));      
         window.localStorage.removeItem('shipid');
         alert("Inventory created successfully");
         db();
@@ -224,10 +261,11 @@ $(function() {
         return false
       },
       error: function(data,status){
-        alert('Require valid data. Please try again!')
+        alert(JSON.stringify(data)); 
       },
 
       complete: function(data){
+          // alert(JSON.stringify(data));  
           // alert('completed')
       },
 
@@ -235,7 +273,7 @@ $(function() {
             alert('Access denied')
       }
     });
-      e.preventDefault();
+      // e.preventDefault();
       return false  
   });
 });
@@ -311,4 +349,7 @@ function inven(){
   //         alert('Access denied');
   //       }
   //     });
+}
+function deta(){
+  window.location = 'details.html';
 }

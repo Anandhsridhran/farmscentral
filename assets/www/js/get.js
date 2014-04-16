@@ -113,6 +113,27 @@ $(document).ready(function(){
           alert('Access denied')
         }
       });
+      $.ajax({
+        type: "GET",
+        url: 'http://nano.amfnano.com/barns/'+id+'/last_event_report.json?user_credentials='+token,
+        dataType: "json",
+        cache: false,
+        success: function(data) {        
+          console.log(data);
+          $('#events').text(data.description);
+        },
+        error: function(data,status){
+          alert('No Data Found')
+        },
+
+        complete: function(data){
+          // alert('completed')
+        },
+
+        denied: function(data){
+          alert('Access denied')
+        }
+      });
 
     }  
   // GET Sites
@@ -258,6 +279,29 @@ function get_barns(){
             $("#statusimg").attr("src", "images/fire1.png")
           }
           return false;
+        },
+        error: function(data,status){
+          alert('No Data Found')
+        },
+
+        complete: function(data){
+          // alert('completed')
+        },
+
+        denied: function(data){
+          alert('Access denied')
+        }
+      });
+      $.ajax({
+        type: "GET",
+        url: 'http://nano.amfnano.com/barns/'+id+'/last_event_report.json?user_credentials='+token,
+        dataType: "json",
+        cache: false,
+        success: function(data) {        
+          console.log(data);
+          $('#events').text(data.description);
+
+          //alert(data);
         },
         error: function(data,status){
           alert('No Data Found')
