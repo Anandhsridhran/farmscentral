@@ -134,6 +134,28 @@ $(document).ready(function(){
           alert('Access denied')
         }
       });
+      $.ajax({
+        type: "GET",
+        url: 'http://farmcentral.softimum.com/barns/'+id+'/last_inventory_report.json?user_credentials='+token,
+        dataType: "json",
+        cache: false,
+        success: function(data) {      
+        // alert();  
+          console.log(data);
+          $('#curr_inven').text(data.total_inventory);
+        },
+        error: function(data,status){
+          alert('No Data Found')
+        },
+
+        complete: function(data){
+          // alert('completed')
+        },
+
+        denied: function(data){
+          alert('Access denied')
+        }
+      });
 
     }  
   // GET Sites
@@ -302,6 +324,28 @@ function get_barns(){
           $('#events').text(data.description);
 
           //alert(data);
+        },
+        error: function(data,status){
+          alert('No Data Found')
+        },
+
+        complete: function(data){
+          // alert('completed')
+        },
+
+        denied: function(data){
+          alert('Access denied')
+        }
+      });
+      $.ajax({
+        type: "GET",
+        url: 'http://farmcentral.softimum.com/barns/'+id+'/last_inventory_report.json?user_credentials='+token,
+        dataType: "json",
+        cache: false,
+        success: function(data) {      
+        // alert();  
+          console.log(data);
+          $('#curr_inven').text(data.total_inventory);
         },
         error: function(data,status){
           alert('No Data Found')

@@ -232,9 +232,7 @@ $(function() {
         //alert(inven_medic);
       }
       
-      // var pig_treatments1 = JSON.stringify(pig_treatments);
-      // alert(pig_treatments);
-      // alert(pig_treatments1);
+      
       var bookData = {
                  "barn_id": shipid,
                  "report_date": report_date,
