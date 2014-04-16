@@ -193,7 +193,7 @@ $(function() {
 
 
   $('#new_report').on("submit", function(){        
-      var shipid =  window.localStorage.getItem('shipid');
+      var shipid =  parseInt(window.localStorage.getItem('shipid'));
       var report_date = $('#report_date').val();
       var total_pig_deaths = $('#report_number_of_pig_deaths').val();
       var td = total_pig_deaths;
@@ -220,7 +220,7 @@ $(function() {
         var inven_dosage =$("#inven_dos"+c).val(); 
         var inven_admin =$("#inven_adm"+c).val();
         // pigt += {"medicine_given":inven_medic, "count": c, "dosage": inven_dosage , "how_administered":inven_admin };
-         pig_treatments.push('{medicine_given:"'+inven_medic+'",count:'+c+',dosage:"'+inven_dosage+'",how_administered:"'+inven_admin+'"}');
+         pig_treatments.push('{"medicine_given":"'+inven_medic+'",count:'+c+',dosage:"'+inven_dosage+'",how_administered:"'+inven_admin+'"}');
         c = c + 1;
         //alert(inven_medic);
       }
@@ -248,8 +248,8 @@ $(function() {
       url: 'http://farmcentral.softimum.com/inventory_reports.json?user_credentials=RRFy8ulfERw5wCjtwit',
       crossDomain: true,
       contentType: "application/json; charset=utf-8",
-      data: JSON.stringify(bookData),
-      // data: bookData, 
+      // data: JSON.stringify(bookData),
+      data: bookData, 
       dataType: "json",
       cache: false,
       success: function(data) {  
