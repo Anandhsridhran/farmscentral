@@ -36,6 +36,10 @@
         <div role="main" class="ui-content">
           <ul data-role="listview" data-inset="true">
             <fieldset>
+            <li data-role="fieldcontain">
+                  <!-- <label id="run_inven">Running Inventory</label></br> -->
+                  <span style="font-size:15px; color:black; font-family:'Open Sans' sans-serif; font-weight:normal; float:left; width: 100%;" id="run_rep"></span>
+                </li>
               <li data-role="fieldcontain">
                 <label for="month_of_inventory" class="select">Month Of Inventory</label></br>
                 <select name="select-choice-1" id="month_of_inventory" data-native-menu="true">
@@ -166,10 +170,10 @@
               <h1>Daily Inventory</h1>
             </div><!-- /header -->
             <div role="main" class="ui-content">
-              <ul data-role="listview" data-inset="true">
+              <ul data-role="listview" data-inset="true" id="run">
                 <li data-role="fieldcontain">
-                  <label for="report_running_inventory">Running Inventory</label></br>
-                  <input id="report_running_inventory" name="report[running_inventory]" value="100" readonly="true" >
+                  <!-- <label id="run_inven">Running Inventory</label></br> -->
+                  <span style="font-size:15px; color:black; font-family:'Open Sans' sans-serif; font-weight:normal; float:left; width: 100%;" id="run_inven"></span>
                 </li>
                  <li data-role="fieldcontain">
                   <fieldset data-role="controlgroup">
@@ -382,7 +386,9 @@
         var dd = today.getDate();
         var mm = today.getMonth()+1; //January is 0!
         var yyyy = today.getFullYear();    
-        $('#report_date').val(dd + '-' + mm + '-' + yyyy);        
+        $('#report_date').val(dd + '-' + mm + '-' + yyyy); 
+        var to_rep =  window.localStorage.getItem('to_rep'); 
+        $('#run_rep').text("Last Report -"+to_rep);
         });
     </script>
    </body>

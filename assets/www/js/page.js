@@ -24,6 +24,8 @@ function user_logout() {
         window.localStorage.removeItem('farm');
         window.localStorage.removeItem('username');
         window.localStorage.removeItem('barn_id');
+        window.localStorage.removeItem('to_in');
+        window.localStorage.removeItem('to_rep');
         window.location ='index.html';
 }
 
@@ -35,7 +37,10 @@ function check_pig_death(){
    }
    else{
         window.location ='#demo-page3'
-        }    
+        } 
+        var to_in =  window.localStorage.getItem('to_in'); 
+        $('#run_inven').text("Running Invetory -"+to_in);
+  
 }
 function check_treat(){
   if($('#radio-choiceb-1').is(':checked')) { 
@@ -248,7 +253,7 @@ $(function() {
                  // "how_administered":how_administered,
                  //"pig_treatments" :JSON.stringify(pig_treatments)
              };
-       // alert(JSON.stringify(bookData));    
+       // alert(JSON.stringify(bookData));  
        // alert(bookData);
       $.ajax({
       type: "POST",
@@ -263,6 +268,8 @@ $(function() {
         // alert(JSON.stringify(data));      
         window.localStorage.removeItem('shipid');
         alert("Inventory created successfully");
+        window.localStorage.removeItem('to_in');
+        window.localStorage.removeItem('to_rep');
         db();
         $('#new_report')[0].reset();
         return false
@@ -329,7 +336,39 @@ function ship(){
 function inven(){
   var token = window.localStorage.getItem('login_token');
   var shipid =  window.localStorage.getItem('shipid');
-  window.location ='inventory.html';
+  // window.location ='inventory.html';
+  $.ajax({
+        type: "GET",
+        url: 'http://nano.amfnano.com/barns/'+shipid+'/last_inventory_report.json?user_credentials='+token,
+        // dataType: "json",
+        crossDomain: true,
+        // cache: false,
+        success: function(data) {      
+        // alert(); 
+        // alert(JSON.stringify(data)); 
+        window.localStorage.setItem('to_in', JSON.stringify(data.total_inventory));
+        window.localStorage.setItem('to_rep', JSON.stringify(data.report_date));
+        var to_rep =  window.localStorage.getItem('to_rep');
+        var to_in =  window.localStorage.getItem('to_in');
+        // alert(to_in);
+          console.log(data);
+          
+          // $("#test1 span").text("3kj");
+          window.location ='inventory.html'
+
+        },
+        error: function(data,status){
+          alert(JSON.stringify(data));
+        },
+
+        complete: function(data){
+          // alert('completed')
+        },
+
+        denied: function(data){
+          alert('Access denied')
+        }
+      });
   // alert(shipid);
   // $.ajax({
   //       type: "GET",
