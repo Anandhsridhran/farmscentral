@@ -197,11 +197,15 @@ $(function() {
       var report_date = $('#report_date').val();
       var total_pig_deaths = $('#report_number_of_pig_deaths').val();
       var td = total_pig_deaths;
-      var pig_deaths_attributes = [];
+      var pig_deaths_attributes;
+      var temp_pig_deaths_attributes=[];
       var n =1;
       for (i = 0; i < td; i++) {
         var idtd = "caused"+n;
-        pig_deaths_attributes.push('{cause:"'+idtd+'",count:'+td+'}');
+        // pig_deaths_attributes.push('{cause:"'+idtd+'",count:'+td+'}');
+        // pig_deaths_attributes += '{cause:"'+idtd+'",count:'+td+'}';
+        pig_deaths_attributes = {"cause":idtd,"count": n };
+        temp_pig_deaths_attributes.push(pig_deaths_attributes);
         n = n+1;
       }
       // var cause_of_death = $('#report_death_reason').val();
@@ -213,14 +217,17 @@ $(function() {
       var b = total_pigs_treated;
       var c = 1;
       var pigt = "";
-      var pig_treatments = [];
+      var pig_treatments;
+      var temp_pig_treatments=[];
       for (i = 0; i < b; i++) {
         var medic= "inven_med"+c;
         var inven_medic =$("#"+medic).val();
         var inven_dosage =$("#inven_dos"+c).val(); 
         var inven_admin =$("#inven_adm"+c).val();
         // pigt += {"medicine_given":inven_medic, "count": c, "dosage": inven_dosage , "how_administered":inven_admin };
-         pig_treatments.push('{"medicine_given":"'+inven_medic+'",count:'+c+',dosage:"'+inven_dosage+'",how_administered:"'+inven_admin+'"}');
+        // pig_treatments.push('{medicine_given:"'+inven_medic+'",count:'+c+',dosage:"'+inven_dosage+'",how_administered:"'+inven_admin+'"}');
+        pig_treatments = {"medicine_given":inven_medic, "count": c, "dosage": inven_dosage , "how_administered":inven_admin };
+        temp_pig_treatments.push(pig_treatments);
         c = c + 1;
         //alert(inven_medic);
       }
@@ -234,26 +241,28 @@ $(function() {
                  "user_initials":user_initials,
                  // "total_pig_deaths": total_pig_deaths,
                  // "cause_of_death":cause_of_death,
-                 "pig_deaths_attributes":pig_deaths_attributes,
+                 // /"pig_deaths_attributes":pig_deaths_attributes,
                  "total_pigs_treated":total_pigs_treated,
+                  "pig_deaths_attributes":temp_pig_deaths_attributes,
+                  "pig_treatments_attributes":temp_pig_treatments
                  // "medicine_given":medicine_given,
                  // "dosage":dosage,
                  // "how_administered":how_administered,
-                 "pig_treatments" :pig_treatments
+                 //"pig_treatments" :JSON.stringify(pig_treatments)
              };
-       alert(JSON.stringify(bookData));    
-       alert(bookData);
+       // alert(JSON.stringify(bookData));    
+       // alert(bookData);
       $.ajax({
       type: "POST",
-      url: 'http://farmcentral.softimum.com/inventory_reports.json?user_credentials=RRFy8ulfERw5wCjtwit',
+      url: 'http://nano.amfnano.com/inventory_reports.json?user_credentials='+token,
       crossDomain: true,
       contentType: "application/json; charset=utf-8",
-      // data: JSON.stringify(bookData),
-      data: bookData, 
+      data: JSON.stringify(bookData),
+      // data: bookData, 
       dataType: "json",
       cache: false,
       success: function(data) {  
-        alert(JSON.stringify(data));      
+        // alert(JSON.stringify(data));      
         window.localStorage.removeItem('shipid');
         alert("Inventory created successfully");
         db();
