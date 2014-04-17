@@ -38,8 +38,7 @@ function check_pig_death(){
    else{
         window.location ='#demo-page3'
         } 
-        var to_in =  window.localStorage.getItem('to_in'); 
-        $('#run_inven').text("Running Invetory -"+to_in);
+        
   
 }
 function check_treat(){
@@ -201,6 +200,7 @@ $(function() {
       var shipid =  parseInt(window.localStorage.getItem('shipid'));
       var report_date = $('#report_date').val();
       var total_pig_deaths = $('#report_number_of_pig_deaths').val();
+      if($('#radio-choice-1').is(':checked')) { 
       var td = total_pig_deaths;
       var pig_deaths_attributes;
       var temp_pig_deaths_attributes=[];
@@ -213,12 +213,17 @@ $(function() {
         temp_pig_deaths_attributes.push(pig_deaths_attributes);
         n = n+1;
       }
+    }
+    else{
+      pig_deaths_attributes = {"cause":"null","count": 0 };
+    }
       // var cause_of_death = $('#report_death_reason').val();
       var total_pigs_treated = $('#report_number_of_pigs_treated').val();
       // var medicine_given = $('#report_name_of_product_given').val();
       // var dosage = $('#report_amount_given').val();
       // var how_administered = $('#report_route_of_admin').val();
       var user_initials = $('#report_initials').val();
+      if($('#radio-choice-1').is(':checked')) { 
       var b = total_pigs_treated;
       var c = 1;
       var pigt = "";
@@ -236,6 +241,10 @@ $(function() {
         c = c + 1;
         //alert(inven_medic);
       }
+    }
+    else{
+      temp_pig_treatments = [{"medicine_given":"null", "count": 0, "dosage": "null" , "how_administered":"null" }];
+    }
       
       
       var bookData = {
@@ -244,8 +253,8 @@ $(function() {
                  "user_initials":user_initials,
                  // "total_pig_deaths": total_pig_deaths,
                  // "cause_of_death":cause_of_death,
-                 // /"pig_deaths_attributes":pig_deaths_attributes,
-                 "total_pigs_treated":total_pigs_treated,
+                 // "pig_deaths_attributes":pig_deaths_attributes,
+                 // "total_pigs_treated":total_pigs_treated,
                   "pig_deaths_attributes":temp_pig_deaths_attributes,
                   "pig_treatments_attributes":temp_pig_treatments
                  // "medicine_given":medicine_given,
@@ -343,19 +352,20 @@ function inven(){
         // dataType: "json",
         crossDomain: true,
         // cache: false,
-        success: function(data) {      
+        success: function(data) { 
+        window.location ='inventory.html'
+        console.log(data);
         // alert(); 
         // alert(JSON.stringify(data)); 
-        window.localStorage.setItem('to_in', JSON.stringify(data.total_inventory));
+        window.localStorage.setItem('to_in', data.total_inventory);
         window.localStorage.setItem('to_rep', JSON.stringify(data.report_date));
         var to_rep =  window.localStorage.getItem('to_rep');
         var to_in =  window.localStorage.getItem('to_in');
         // alert(to_in);
-          console.log(data);
+          
           
           // $("#test1 span").text("3kj");
-          window.location ='inventory.html'
-
+          
         },
         error: function(data,status){
           alert(JSON.stringify(data));

@@ -136,7 +136,7 @@ $(document).ready(function(){
       });
       $.ajax({
         type: "GET",
-        url: 'http://farmcentral.softimum.com/barns/'+id+'/last_inventory_report.json?user_credentials='+token,
+        url: 'http://nano.amfnano.com/barns/'+id+'/last_inventory_report.json?user_credentials='+token,
         dataType: "json",
         cache: false,
         success: function(data) {      
@@ -339,7 +339,7 @@ function get_barns(){
       });
       $.ajax({
         type: "GET",
-        url: 'http://farmcentral.softimum.com/barns/'+id+'/last_inventory_report.json?user_credentials='+token,
+        url: 'http://nano.amfnano.com/barns/'+id+'/last_inventory_report.json?user_credentials='+token,
         dataType: "json",
         cache: false,
         success: function(data) {      
