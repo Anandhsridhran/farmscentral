@@ -176,6 +176,10 @@ function get_locations(){
     //alert(farms);
       $.ajax({
         type: "GET",
+        beforeSend: function() 
+        { $.mobile.showPageLoadingMsg("a", "Loading"); }, 
+        complete: function() 
+        { $.mobile.hidePageLoadingMsg(); },
         url: 'http://nano.amfnano.com/farms/'+id+'/locations.json?user_credentials='+token,
         dataType: "json",
         cache: false,
@@ -228,6 +232,10 @@ function get_barns(){
         var name = $(this).data('location');
       $.ajax({
         type: "GET",
+        beforeSend: function() 
+        { $.mobile.showPageLoadingMsg("a", "Loading"); }, 
+        complete: function() 
+        { $.mobile.hidePageLoadingMsg(); },
         url: 'http://nano.amfnano.com/locations/'+id+'/barns.json?user_credentials='+token,
         dataType: "json",
         cache: false,
@@ -278,6 +286,10 @@ function get_barns(){
     
       $.ajax({
         type: "GET",
+        beforeSend: function() 
+        { $.mobile.showPageLoadingMsg("a", "Loading"); }, 
+        complete: function() 
+        { $.mobile.hidePageLoadingMsg(); },
         url: 'http://nano.amfnano.com/barns/'+id+'/last_reading.json?user_credentials='+token,
         dataType: "json",
         cache: false,

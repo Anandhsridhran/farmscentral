@@ -13,6 +13,8 @@ function delayShow() {
 }
 
 function user_logout() {
+
+        
         window.localStorage.removeItem('login_token');
         window.localStorage.removeItem('location');
         window.localStorage.removeItem('shipid');
@@ -26,6 +28,8 @@ function user_logout() {
         window.localStorage.removeItem('barn_id');
         window.localStorage.removeItem('to_in');
         window.localStorage.removeItem('to_rep');
+
+       
         window.location ='index.html';
 }
 
@@ -284,7 +288,7 @@ $(function() {
         return false
       },
       error: function(data,status){
-        alert(JSON.stringify(data)); 
+        alert("Required valid data"); 
       },
 
       complete: function(data){
@@ -368,7 +372,7 @@ function inven(){
           
         },
         error: function(data,status){
-          alert(JSON.stringify(data));
+          alert("Required Valid Data");
         },
 
         complete: function(data){
