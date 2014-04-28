@@ -141,6 +141,7 @@ margin-right: 10px;
   font-size: 15px;
   text-align: left;
   margin-bottom: 10px;
+  text-align: center;
   /*margin-top: -15px;*/
   
   padding: 10px;
@@ -171,4 +172,7 @@ margin-right: 10px;
   height: 44px;
   /*padding: 5px;*/
   /*margin-bottom: 5px;*/
+}
+.dylist{
+  width:40%;
 }

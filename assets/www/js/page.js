@@ -67,6 +67,7 @@ function demopage5(){
 function back(){
   //window.location ='#demo-page1'
   history.back();
+  $('.list_view').listview().listview('refresh');
 }
 
 function reason(){

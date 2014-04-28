@@ -24,7 +24,7 @@
     </div><!-- /header -->
     	<div role="main" class="ui-content" style="margin-top: 10px;">
       
-    	<ul data-role="listview" data-inset="true" id="admin_farms">
+    	<ul data-role="listview" data-inset="true" id="admin_farms" class="list_view">
     	  <li data-role="list-divider">Farms List</li>
     	</ul>
    	</div><!-- /content -->
@@ -42,14 +42,15 @@
         <div style="text-align:center; padding-top: 2px;">
             <img src="images/mobile-logo-2.png" />
         </div>
+        <a href="" onclick="backm()" style="float:right">Back</a>
         <div class="detail_db">
-          <span id="db_farm1" class="span_db"></span>
+          Farm -<span id="db_farm1" class="span_db"></span></br>
           Hog Owner -<span id="db_hog2" class="span_db"></span> 
         </div>
     </div><!-- /header -->
-    <div role="main" class="ui-content" id ="farm_locations" style="margin-top: 10px;">
+    <div role="main" class="ui-content" id ="farm_locations" style="margin-top: 25px;">
      
-        <ul data-role="listview" data-inset="true" id="locations_list">
+        <ul data-role="listview" data-inset="true" id="locations_list" class="list_view">
         <li data-role="list-divider">Locations List</li>
       </ul>
    		
@@ -68,13 +69,14 @@
         <div style="text-align:center; padding-top: 2px;">
             <img src="images/mobile-logo-2.png" />
         </div>
+        <a href="" onclick="backm()" style="float:right">Back</a>
         <div class="detail_db">
-       Hog Owner -<span id="db_hog3" class="span_db"></span>
-       <span id="db_location" class="span_db"></span>   
+       Hog Owner -<span id="db_hog3" class="span_db"></span></br>
+       Location -<span id="db_location" class="span_db"></span>   
       </div>
     </div><!-- /header -->
-      <div role="main" class="ui-content" id="farms_barns" style="margin-top: 10px;">
-      <ul data-role="listview" data-inset="true" id="barns_list">
+      <div role="main" class="ui-content" id="farms_barns" style="margin-top: 25px;">
+      <ul data-role="listview" data-inset="true" id="barns_list" class="list_view">
         <li data-role="list-divider">Barns List</li>
       </ul>
     </div><!-- /content -->
@@ -90,7 +92,8 @@
   <div data-role="header" id="head1" style="background: url(images/Topbg.png);background-repeat: repeat;" >
     <div style="width:100%; float:left;">
         <span style="font-size:30px; color:white; font-family:'Open Sans' sans-serif; font-weight:bold;">Farm Assist</span>
-    </div>   
+    </div>
+    <!-- <a href="" onclick="backm()" style="float:right">Back</a>  -->
   </div><!-- /header -->
   <div role="main" class="ui-content">
     <div id="box1" style="height:20%; padding:10px;">

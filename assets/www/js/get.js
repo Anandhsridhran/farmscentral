@@ -1,6 +1,4 @@
 $(document).ready(function(){
-    
-    
      var token = window.localStorage.getItem('login_token');
      var role = window.localStorage.getItem('role');
      var first = window.localStorage.getItem('first_name');
@@ -14,13 +12,22 @@ $(document).ready(function(){
         url: 'http://nano.amfnano.com/farms/'+farm+'/locations.json?user_credentials='+token,
         dataType: "json",
         cache: false,
-        success: function(data) {        
+        success: function(data) {
+          // window.location ="#demo-page2";        
           list  = []
           $.each(data, function(x, v) {
-            list.push("<li><a href='#' data-transition='slide' data-id="+v.location_id+" data-location="+v.name+">"+v.name+"</a></li>")
+             if(v.system_status="OK"){
+              // var st_img = $('<img>',{src:'online.png'}); 
+              var st_img = '<img src="online.png" style="width:16px;height:16px"/>'; 
+
+            }
+            else{
+              // var st_img = $('<img>',{ src:'offline.png'});
+              var st_img = '<img src="offline.png" style="width:16px;height:16px"/>'; 
+            }
+            list.push("<li><a href='#' data-transition='slide' data-id="+v.location_id+" data-location="+v.name+">"+st_img+v.name+"</a></li>")
           });  
           $('#locations_list').append(list);         
-           window.location ="#demo-page2";
           get_barns();
           $('#locations_list').listview('refresh');
           $('#db_hog2').text(user);
@@ -46,12 +53,20 @@ $(document).ready(function(){
       dataType: "json",
       cache: false,
       success: function(data) {
-
         console.log(data)
         list  = []
         $.each(data, function(x, v) {
           //alert(v.farm_id);
-            list.push("<li><a href='#' data-transition='slide' data-id="+v.farm_id+" data-name="+v.name+">"+v.name+"</a></li>")
+            if(v.system_status="OK"){
+              // var st_img = $('<img>',{src:'online.png'}); 
+              var st_img = '<img src="online.png" style="width:16px;height:16px"/>'; 
+
+            }
+            else{
+              // var st_img = $('<img>',{ src:'offline.png'});
+              var st_img = '<img src="offline.png" style="width:16px;height:16px"/>'; 
+            }
+            list.push("<li data-role='fieldcontain'><a href='#' class'dylist' data-transition='slide' data-id="+v.farm_id+" data-name="+v.name+">"+st_img+v.name+"</a>"+"</li>")
         });        
         $('#admin_farms').append(list);
         $('#admin_farms').listview('refresh');
@@ -62,7 +77,6 @@ $(document).ready(function(){
       },
       error: function(data,status){
         alert('No data Found')
-        
       },
 
       complete: function(data){
@@ -87,18 +101,15 @@ $(document).ready(function(){
         url: 'http://nano.amfnano.com/barns/'+id+'/last_reading.json?user_credentials='+token,
         dataType: "json",
         cache: false,
-        success: function(data) {        
+        success: function(data) {
+          window.location ="#demo-page4";
           console.log(data)
           $('#humidity').text(data.humidity+'%');
           $('#s_status').text(data.system_status);
           $('#temp').text(data.temperatures[0].value+'F');
-          //$('#low_temp').text(data.temperatures[1].value+'F');
-          // $('#air').text(data.air_quality);
-          // $('#co').text(data.CO);
           $('#ac').text(data.AC_power);
           $('#db_barn').text(data.barn_name);
           $('#last_up').text('Last update on-'+ data.reported_at);
-          window.location ="#demo-page4";
           return false;
         },
         error: function(data,status){
@@ -171,7 +182,7 @@ function get_locations(){
      $('#locations_list li:not(:first)').remove();   
      var id = $(this).data('id');
      var name = $(this).data('name');
-    
+    // $(“body”).fadeOut();
     var farms = $(this).data('farms');
     //alert(farms);
       $.ajax({
@@ -184,19 +195,25 @@ function get_locations(){
         dataType: "json",
         cache: false,
         success: function(data) {        
-         
-         
+          window.location ="#demo-page2";
           list  = []
           $.each(data, function(x, v) {
-            list.push("<li><a href='#' data-transition='slide' data-id="+v.location_id+" data-location="+v.name+">"+v.name+"</a></li>")
+             if(v.system_status="OK"){
+              // var st_img = $('<img>',{src:'online.png'}); 
+              var st_img = '<img src="online.png" style="width:16px;height:16px"/>'; 
+
+            }
+            else{
+              // var st_img = $('<img>',{ src:'offline.png'});
+              var st_img = '<img src="offline.png" style="width:16px;height:16px"/>'; 
+            }
+            list.push("<li><a href='#' data-transition='slide' data-id="+v.location_id+" data-location="+v.name+">"+st_img+v.name+"</a></li>")
           });        
           $('#locations_list').append(list);         
-           window.location ="#demo-page2";
           $('#db_hog2').text(user);
           $('#db_farm1').text(name);
           get_barns();
           $('#locations_list').listview('refresh');
-          
           return false;
         },
         error: function(data,status){
@@ -239,19 +256,22 @@ function get_barns(){
         url: 'http://nano.amfnano.com/locations/'+id+'/barns.json?user_credentials='+token,
         dataType: "json",
         cache: false,
-        success: function(data) {                  
+        success: function(data) {                 
+          window.location ="#demo-page3"; 
           list  = []
           $.each(data, function(x, v) {
-            if(v.system_status == "OK"){
-              var img = "images/okie.png";
+             if(v.system_status="OK"){
+              // var st_img = $('<img>',{src:'online.png'}); 
+              var st_img = '<img src="online.png" style="width:16px;height:16px"/>'; 
+
             }
             else{
-              var img = "images/fire3.png";
+              // var st_img = $('<img>',{ src:'offline.png'});
+              var st_img = '<img src="offline.png" style="width:16px;height:16px"/>'; 
             }
-              list.push("<li><a href='#'data-transition='slide' data-id="+v.barn_id+">"+v.name+"</a></li>")
+              list.push("<li><a href='#'data-transition='slide' data-id="+v.barn_id+">"+st_img+v.name+"</a></li>")
           });        
            $('#barns_list').append(list);         
-          window.location ="#demo-page3";
            get_reading();
           $('#db_hog3').text(user);
           $('#db_location').text(name);
@@ -374,4 +394,8 @@ function get_barns(){
    });
   }
 });
-
+function backm(){
+  //window.location ='#demo-page1'
+  history.back();
+  $('.list_view').listview().listview('refresh');
+}
