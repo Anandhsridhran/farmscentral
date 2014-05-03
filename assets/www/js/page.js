@@ -308,12 +308,16 @@ $(function() {
 function db(){
   var role = window.localStorage.getItem('role');
   if(role == "SiteManager"){
+    // window.localStorage.removeItem('shipid');
     window.location="main_dashboard.html#demo-page2"
+
   }
   else if(role == "HogOwner"){
+    // window.localStorage.removeItem('shipid');
     window.location ="main_dashboard.html"  
   }
   else if(role == "BarnManager"){
+    // window.localStorage.removeItem('shipid');
     window.location ="main_dashboard.html#demo-page4"  
   }
 }
@@ -364,8 +368,15 @@ function inven(){
         // alert(JSON.stringify(data)); 
         window.localStorage.setItem('to_in', data.total_inventory);
         window.localStorage.setItem('to_rep', JSON.stringify(data.report_date));
+        window.localStorage.setItem('to_initi', JSON.stringify(data.user_initials));
+        window.localStorage.setItem('to_death', JSON.stringify(data.total_pig_deaths));
+        window.localStorage.setItem('to_sick', JSON.stringify(data.total_pigs_treated));
         var to_rep =  window.localStorage.getItem('to_rep');
         var to_in =  window.localStorage.getItem('to_in');
+        var to_initi =  window.localStorage.getItem('to_initi');
+        var to_death =  window.localStorage.getItem('to_death');
+        var to_sick =  window.localStorage.getItem('to_sick');
+
         // alert(to_in);
           
           
@@ -384,33 +395,69 @@ function inven(){
           alert('Access denied')
         }
       });
-  // alert(shipid);
-  // $.ajax({
-  //       type: "GET",
-  //       url: 'http://farmcentral.softimum.com/barns/'+shipid+'/last_inventory_report.json?user_credentials='+token,
-  //       crossDomain: true,
-  //       success: function(data) {        
-         
-  //         alert(JSON.stringify(data));
-          
-  //         window.location ='inventory.html'
-
-          
-  //       },
-  //       error: function(data,status){
-  //         alert(JSON.stringify(data));
-  //         window.location ='inventory.html'
-  //       },
-
-  //       complete: function(data){
-  //         // alert('completed')
-  //       },
-
-  //       denied: function(data){
-  //         alert('Access denied');
-  //       }
-  //     });
 }
 function deta(){
   window.location = 'details.html';
 }
+function invback(){
+  window.localStorage.removeItem('shipid');
+  history.back();
+}
+function cancelinv(){
+  var token = window.localStorage.getItem('login_token');
+    // var first = window.localStorage.getItem('first_name');
+    //  var last =  window.localStorage.getItem('last_name');
+    //  var user = first +" "+ last ;
+    var shipid =  window.localStorage.getItem('shipid');
+    // var id = shipid;
+    // alert(id);
+    $.ajax({
+        type: "GET",
+        url: 'http://nano.amfnano.com/barns/'+shipid+'/last_reading.json?user_credentials='+token,
+        // dataType: "json",
+        crossDomain: true,
+        // cache: false,
+        success: function(data) { 
+          // alert(JSON.stringify(data));
+          window.location ="main_dashboard.html#demo-page4";
+          console.log(data);
+          $('#humidity').text(data.humidity+'%');
+          $('#s_status').text(data.system_status);
+          $('#temp').text(data.temperatures[0].value+'F');
+          $('#ac').text(data.AC_power);
+          $('#last_up').text('Last update on-'+ data.reported_at);
+          $('#db_barn').text(data.barn_name);
+          $('#db_hog4').text(user); 
+          if(data.system_status == "OK"){
+            $("#statusimg").attr("src", "online.png");
+          }
+          else{
+            $("#statusimg").attr("src", "offline.png")
+          } 
+        },
+        error: function(data,status){
+          alert("Required Valid Data");
+        },
+
+        complete: function(data){
+          // alert('completed')
+        },
+
+        denied: function(data){
+          alert('Access denied')
+        }
+      });
+
+}
+function incris(){
+        alert();
+        var textval = parseInt($('#total_pigs').val()) + 1;
+        $('#total_pigs').val() = textval;
+      }
+      function decris(){
+        var textval = $('#total_pigs').val()
+        if (textval>1) {
+            var res = parseInt(textval) - 1;
+            $('#total_pigs').val() = res;
+        };
+      }

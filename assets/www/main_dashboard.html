@@ -14,7 +14,7 @@
 <div data-role="page" id="demo-page1" data-url="demo-page1">
 
     <div data-role="header" id="heading" >
-        <a href="#left-panel"><i class='icon-reorder'></i></a>
+        <!-- <a href="#left-panel"><i class='icon-reorder'></i></a> -->
         <div style="text-align:center; padding-top: 2px;"> 
             <img src="images/mobile-logo-2.png" />
         </div>
@@ -28,7 +28,18 @@
     	  <li data-role="list-divider">Farms List</li>
     	</ul>
    	</div><!-- /content -->
-   	<div data-role="panel" data-transition="slide"  id="left-panel">
+    <div data-role="footer" class="foot" data-position="fixed" style="background: url(images/Topbg.png);background-repeat: repeat;" >
+      <div class="footermenu3" onclick="db()">
+        <a href="#"><img src="images/footer-image-1.png" style="height:38px;" /></a>
+      </div>
+      <div class="footermenu3" onclick="user_logout();">
+        <a href="#"><img src="images/signout.png" style="height:38px;" /></a>
+      </div>       
+      <div class="footermenu3">
+        <a href="#left-panel"><img src="images/footer-image-5.png" style="height:38px;" /></a>
+      </div>  
+  </div>
+   	<div data-role="panel" data-transition="slide" data-position="right"  id="left-panel">
     	<ul data-role='listview'>
       		<li data-role="list-divider" id="heading_menu">Menu</li>
       		<li><a href="#" data-transition="slide" onclick="db()" data-ajax='false' rel="external"><i class='icon-dashboard'></i> Dashboard</a></li>
@@ -38,7 +49,7 @@
 </div>
 <div data-role="page" id="demo-page2"  data-url="demo-page2">
     <div data-role="header" id="heading" >
-        <a href="#left-panel"><i class='icon-reorder'></i></a>
+        <!-- <a href="#left-panel"><i class='icon-reorder'></i></a> -->
         <div style="text-align:center; padding-top: 2px;">
             <img src="images/mobile-logo-2.png" />
         </div>
@@ -55,7 +66,18 @@
       </ul>
    		
    	</div><!-- /content -->
-   	<div data-role="panel" data-transition="slide"  id="left-panel">
+    <div data-role="footer" class="foot" data-position="fixed" style="background: url(images/Topbg.png);background-repeat: repeat;" >
+      <div class="footermenu3" onclick="db()">
+        <a href="#"><img src="images/footer-image-1.png" style="height:38px;" /></a>
+      </div>
+      <div class="footermenu3" onclick="user_logout();">
+        <a href="#"><img src="images/signout.png" style="height:38px;" /></a>
+      </div>       
+      <div class="footermenu3">
+        <a href="#left-panel"><img src="images/footer-image-5.png" style="height:38px;" /></a>
+      </div>  
+    </div>
+   	<div data-role="panel" data-transition="slide" data-position="right"  id="left-panel">
     	<ul data-role='listview'>
       		<li data-role="list-divider" id="heading_menu">Menu</li>
       		<li><a href="#" data-transition="slide" onclick="db()" data-ajax='false' rel="external"><i class='icon-dashboard'></i> Dashboard</a></li>
@@ -65,7 +87,7 @@
 </div>  
 <div data-role="page" id="demo-page3" data-url="demo-page3">
     <div data-role="header" id="heading" >
-        <a href="#left-panel"><i class='icon-reorder'></i></a>
+        <!-- <a href="#left-panel"><i class='icon-reorder'></i></a> -->
         <div style="text-align:center; padding-top: 2px;">
             <img src="images/mobile-logo-2.png" />
         </div>
@@ -80,7 +102,18 @@
         <li data-role="list-divider">Barns List</li>
       </ul>
     </div><!-- /content -->
-    <div data-role="panel" data-transition="slide"  id="left-panel">
+    <div data-role="footer" class="foot" data-position="fixed" style="background: url(images/Topbg.png);background-repeat: repeat;" >
+      <div class="footermenu3" onclick="db()">
+        <a href="#"><img src="images/footer-image-1.png" style="height:38px;" /></a>
+      </div>
+      <div class="footermenu3" onclick="user_logout();">
+        <a href="#"><img src="images/signout.png" style="height:38px;" /></a>
+      </div>       
+      <div class="footermenu3">
+        <a href="#left-panel"><img src="images/footer-image-5.png" style="height:38px;" /></a>
+      </div>  
+    </div>
+    <div data-role="panel" data-transition="slide" data-position="right" id="left-panel">
       <ul data-role='listview'>
           <li data-role="list-divider" id="heading_menu">Menu</li>
           <li><a href="#" data-transition="slide" onclick="db()" data-ajax='false' rel="external"><i class='icon-dashboard'></i> Dashboard</a></li>
@@ -113,7 +146,7 @@
            <span style="font-size:30px; color:white; font-family:'Open Sans' sans-serif; font-weight:bold; float:left; width: 100%;" id="s_status">OK</span>
         </div>
         <div style="width:30%; float:left;">
-          <img src="images/s-box-image-1.png" style="width:80%;" />
+          <img id="statusimg" src="images/s-box-image-1.png" style="width:80%;" />
         </div>
         </div>
       </div>
@@ -162,21 +195,30 @@
     <div >
     </div>
   </div>
-  <div data-role="footer" id="foot" data-position="fixed" style="background: url(images/Topbg.png);background-repeat: repeat;" >
-    <div style="width:25%; float:left; text-align:center;" onclick="db()">
-                <a href="#"><img src="images/footer-image-1.png" style="height:38px;" /></a>
-                </div>
-                <div style="width:25%; float:left; text-align:center;" onclick="inven()">
-                <a href="#"><img src="images/footer-image-2.png" style="height:38px;" /></a>
-                </div>
-                <div style="width:25%; float:left; text-align:center;" onclick="ship()">
-                <a href="#"><img src="images/footer-image-3.png" style="height:38px;" /></a>
-                </div>
-                <div style="width:25%; float:left; text-align:center;" onclick="user_logout();">
-                <a href="#"><img src="images/signout.png" style="height:38px;" /></a>
-                </div>       
-     
+  <div data-role="footer" class="foot" data-position="fixed" style="background: url(images/Topbg.png);background-repeat: repeat;" >
+      <div class="footermenu4" onclick="db()">
+        <a href="#"><img src="images/footer-image-1.png" style="height:38px;" /></a>
+      </div>
+      <div class="footermenu4" onclick="inven()">
+        <a href="#"><img src="images/footer-image-2.png" style="height:38px;" /></a>
+      </div>
+      <div class="footermenu4" onclick="ship()">
+        <a href="#"><img src="images/footer-image-3.png" style="height:38px;" /></a>
+      </div>
+      <div class="footermenu4" onclick="user_logout();">
+        <a href="#"><img src="images/signout.png" style="height:38px;" /></a>
+      </div>       
+      <!-- <div class="footermenu">
+        <a href="#left-panel"><img src="images/footer-image-5.png" style="height:38px;" /></a>
+      </div>  --> 
   </div>
+  <!-- <div data-role="panel" data-transition="slide" data-position="right" data-display="reveal" id="left-panel" style="background:none;">
+      <ul data-role='listview'>
+          <li data-role="list-divider" id="heading_menu">Menu</li>
+          <li><a href="#" data-transition="slide" onclick="db()" data-ajax='false' rel="external"><i class='icon-dashboard'></i> Dashboard</a></li>
+          <li><a href="#" data-ajoutax='false' data-transition="slide"  onclick="user_logout();" rel="external"><i class='icon-signout'></i> Logout</a></li>
+      </ul>
+    </div> -->
     
   </div>
 

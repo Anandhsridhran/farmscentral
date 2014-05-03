@@ -16,16 +16,16 @@ $(document).ready(function(){
           // window.location ="#demo-page2";        
           list  = []
           $.each(data, function(x, v) {
-             if(v.system_status="OK"){
+             if(v.system_status=="OK"){
               // var st_img = $('<img>',{src:'online.png'}); 
-              var st_img = '<img src="online.png" style="width:16px;height:16px"/>'; 
+              var st_img = '<img src="online.png" style="width:16px;height:16px;float:left; padding-left: 9px; padding-top: 12px;"/>'; 
 
             }
             else{
               // var st_img = $('<img>',{ src:'offline.png'});
-              var st_img = '<img src="offline.png" style="width:16px;height:16px"/>'; 
+              var st_img = '<img src="offline.png" style="width:16px;height:16px;float:left; padding-left: 9px; padding-top: 12px;"/>'; 
             }
-            list.push("<li><a href='#' data-transition='slide' data-id="+v.location_id+" data-location="+v.name+">"+st_img+v.name+"</a></li>")
+            list.push("<li>"+st_img+"<a href='#' data-transition='slide' data-id="+v.location_id+" data-location="+v.name+">"+v.name+"</a></li>")
           });  
           $('#locations_list').append(list);         
           get_barns();
@@ -57,16 +57,16 @@ $(document).ready(function(){
         list  = []
         $.each(data, function(x, v) {
           //alert(v.farm_id);
-            if(v.system_status="OK"){
+            if(v.system_status=="OK"){
               // var st_img = $('<img>',{src:'online.png'}); 
-              var st_img = '<img src="online.png" style="width:16px;height:16px"/>'; 
+              var st_img = '<img src="online.png" style="width:16px;height:16px;float:left; padding-left: 9px; padding-top: 12px;"/>'; 
 
             }
             else{
               // var st_img = $('<img>',{ src:'offline.png'});
-              var st_img = '<img src="offline.png" style="width:16px;height:16px"/>'; 
+              var st_img = '<img src="offline.png" style="width:16px;height:16px;float:left; padding-left: 9px; padding-top: 12px;"/>'; 
             }
-            list.push("<li data-role='fieldcontain'><a href='#' class'dylist' data-transition='slide' data-id="+v.farm_id+" data-name="+v.name+">"+st_img+v.name+"</a>"+"</li>")
+            list.push("<li>"+st_img+"<a href='#' class='dylist' data-transition='slide' data-id="+v.farm_id+" data-name="+v.name+">"+v.name+"</a>"+"</li>")
         });        
         $('#admin_farms').append(list);
         $('#admin_farms').listview('refresh');
@@ -110,6 +110,12 @@ $(document).ready(function(){
           $('#ac').text(data.AC_power);
           $('#db_barn').text(data.barn_name);
           $('#last_up').text('Last update on-'+ data.reported_at);
+          if(data.system_status == "OK"){
+            $("#statusimg").attr("src", "online.png");
+          }
+          else{
+            $("#statusimg").attr("src", "offline.png")
+          }
           return false;
         },
         error: function(data,status){
@@ -198,16 +204,16 @@ function get_locations(){
           window.location ="#demo-page2";
           list  = []
           $.each(data, function(x, v) {
-             if(v.system_status="OK"){
+             if(v.system_status=="OK"){
               // var st_img = $('<img>',{src:'online.png'}); 
-              var st_img = '<img src="online.png" style="width:16px;height:16px"/>'; 
+              var st_img = '<img src="online.png" style="width:16px;height:16px;float:left; padding-left: 9px; padding-top: 12px;"/>'; 
 
             }
             else{
               // var st_img = $('<img>',{ src:'offline.png'});
-              var st_img = '<img src="offline.png" style="width:16px;height:16px"/>'; 
+              var st_img = '<img src="offline.png" style="width:16px;height:16px;float:left; padding-left: 9px; padding-top: 12px;"/>'; 
             }
-            list.push("<li><a href='#' data-transition='slide' data-id="+v.location_id+" data-location="+v.name+">"+st_img+v.name+"</a></li>")
+            list.push("<li>"+st_img+"<a href='#' data-transition='slide' data-id="+v.location_id+" data-location="+v.name+">"+v.name+"</a></li>")
           });        
           $('#locations_list').append(list);         
           $('#db_hog2').text(user);
@@ -260,16 +266,16 @@ function get_barns(){
           window.location ="#demo-page3"; 
           list  = []
           $.each(data, function(x, v) {
-             if(v.system_status="OK"){
+             if(v.system_status=="OK"){
               // var st_img = $('<img>',{src:'online.png'}); 
-              var st_img = '<img src="online.png" style="width:16px;height:16px"/>'; 
+              var st_img = '<img src="online.png" style="width:16px;height:16px;float:left; padding-left: 9px; padding-top: 12px;"/>'; 
 
             }
             else{
               // var st_img = $('<img>',{ src:'offline.png'});
-              var st_img = '<img src="offline.png" style="width:16px;height:16px"/>'; 
+              var st_img = '<img src="offline.png" style="width:16px;height:16px;float:left; padding-left: 9px; padding-top: 12px;"/>'; 
             }
-              list.push("<li><a href='#'data-transition='slide' data-id="+v.barn_id+">"+st_img+v.name+"</a></li>")
+              list.push("<li>"+st_img+"<a href='#'data-transition='slide' data-id="+v.barn_id+">"+v.name+"</a></li>")
           });        
            $('#barns_list').append(list);         
            get_reading();
@@ -327,10 +333,10 @@ function get_barns(){
           $('#db_hog4').text(user);
           window.location ="#demo-page4";
            if(data.system_status == "OK"){
-            $("#statusimg").attr("src", "images/ok1.png");
+            $("#statusimg").attr("src", "online.png");
           }
           else{
-            $("#statusimg").attr("src", "images/fire1.png")
+            $("#statusimg").attr("src", "offline.png")
           }
           return false;
         },
@@ -399,3 +405,4 @@ function backm(){
   history.back();
   $('.list_view').listview().listview('refresh');
 }
+

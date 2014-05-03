@@ -16,35 +16,50 @@
             <input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="DpG8kM+ZXG0GR71SKfbZfzeoCqWfipeiYBDNZ9kPLBk=" /></div>
           <div data-role="page" id="demo-page1" data-url="demo-page1">
           <div data-role="header" id="heading" class="topheader">
-              <a href="#left-panel"><i class='icon-reorder'></i></a>
+              <!-- <a href="#left-panel"><i class='icon-reorder'></i></a> -->
+              <!-- <a href="" onclick="invback()" style="float:left">Back</a> -->
               <h1>New Shipment</h1>
             </div><!-- /header -->
             <div role="main" class="ui-content">
-             <ul data-role="listview" data-inset="true">
-              <fieldset>
-                <li data-role="fieldcontain">
+            <div>
                   <label for="shipment_date">Date of shipment</label>
-                  <input id="shipment_date" name="shipment[date_of_shipment]" step="1" type="date">     
-                </li>
-                <li data-role="fieldcontain">
+                  <input id="shipment_date" name="shipment[date_of_shipment]" step="1" type="date">
+            </div>
+            <div>   
                   <label for="total_pigs">Number of pigs</label>
-                  <input type="range" id="total_pigs" name="shipment[number_of_pigs]" value="1" min="1" max="30" data-highlight="true" />
-                </li>
-                 <li data-role="fieldcontain">
+                  <input type="number" id="total_pigs" name="shipment[number_of_pigs]" value="1"/>
+                  <img src="images/minus.png" class="decri" onclick="decris()" /> 
+                  <a href="#" onclick="incris()"><img src="images/plus.png" class="incri"/></a>
+            </div>
+            <div>        
                   <label for="shipment_dead_on_arrival">Dead On Arrival</label>
                   <input id="shipment_dead_on_arrival" name="shipment[dead_on_arrival]" step="1" type="number">
-                </li>                 
-                 <li data-role="fieldcontain">
+            </div>
+            <div>     
                   <label for="pig_supplier">Pig Supplier</label>
                   <input id="pig_supplier" name="shipment[dead_within_day]" type="text">
-                </li>
-               </fieldset>
+               
+            </div>   
                 <button type="Submit" class="btn btn-labeled btn-primary">
                   Submit
                 </button>
-              </ul>
+             
             </div>
-            <div data-role="panel" data-transition="slide"  id="left-panel">
+            <div data-role="footer" class="foot" data-position="fixed" style="background: url(images/Topbg.png);background-repeat: repeat;" >
+              <div class="footermenu4" onclick="db()">
+                <a href="#"><img src="images/footer-image-1.png" style="height:38px;" /></a>
+              </div>
+              <div class="footermenu4" onclick="user_logout();">
+                <a href="#"><img src="images/signout.png" style="height:38px;" /></a>
+              </div>
+              <div class="footermenu4" onclick="cancelinv()">
+                <a href="#"><img src="images/cancel.png" style="height:38px;" /></a>
+              </div>  
+              <div class="footermenu4">
+                <a href="#left-panel"><img src="images/footer-image-5.png" style="height:38px;" /></a>
+              </div>       
+            </div>
+            <div data-role="panel" data-transition="slide" data-position="right" id="left-panel">
               <ul data-role='listview'>
                 <li data-role="list-divider" id="heading_menu">Menu</li>
                 <li><a href="#" data-transition="slide" onclick="db()" data-ajax='false' rel="external"><i class='icon-dashboard'></i> Dashboard</a></li>
@@ -70,6 +85,21 @@
         var yyyy = today.getFullYear();    
         $('#shipment_date').val(dd + '-' + mm + '-' + yyyy);        
         });
+        function incris(){
+        var textval = parseInt($('#total_pigs').val()) + 1;
+        $('#total_pigs').val(textval);
+      }
+      function decris(){
+        var textval = $('#total_pigs').val()
+        if (textval>1) {
+            var res = parseInt(textval) - 1;
+            $('#total_pigs').val(res);
+        }
+        else{
+          return false;
+        }
+      }
+
     //   $(document).ready(function(){
     //   function ind() {
     //   //alert("ddd");
