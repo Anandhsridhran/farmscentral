@@ -323,7 +323,7 @@ function get_barns(){
           console.log(data);
           $('#humidity').text(data.humidity+'%');
           $('#s_status').text(data.system_status);
-          $('#temp').text(data.temperatures[0].value+'F');
+          $('#temp').text(data.temperatures[0].value+' F');
           //$('#low_temp').text(data.temperatures[1].value+'F');
           // $('#air').text(data.air_quality);
           // $('#co').text(data.CO);

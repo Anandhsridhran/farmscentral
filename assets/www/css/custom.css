@@ -189,6 +189,11 @@ margin-right: 10px;
   float:left; 
   text-align:center;
 }
+.footermenu5{
+  width:20%; 
+  float:left; 
+  text-align:center;
+}
 /*.mainbg,.ui-page {
   background-image: url("../images/Systems.png") !important;
   background-repeat:no-repeat;
@@ -212,14 +217,14 @@ margin-right: 10px;
 }
 .incri{
   position:absolute;
-  width: 10%;
-  margin-top: -40px;
-  margin-left: 80%;
+  width: 11%;
+  margin-top: -8%;
+  margin-left: 82%;
 }
 .decri{
   position:absolute;
-  width: 10%;
-  margin-top: -40px;
+  width: 11%;
+  margin-top: -8%;
 }
 
 #total_pigs{
@@ -235,3 +240,22 @@ margin-right: 10px;
 #report_number_of_pig_deaths{
   text-align: center;
 }
+
+
+
+
+
+
+/*#myform {
+    text-align: center;
+    padding: 5px;
+    border: 1px dotted #ccc;
+    margin: 2%;
+}
+.qty {
+    width: 40px;
+    height: 25px;
+    text-align: center;
+}
+input.qtyplus { width:25px; height:25px;}
+input.qtyminus { width:25px; height:25px;}*/

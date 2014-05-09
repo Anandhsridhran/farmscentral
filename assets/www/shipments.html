@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/jquery.mobile-1.3.1.css" />
     <link rel="stylesheet" href="css/custom.css" />
     <link rel="stylesheet" href="css/bootstrap.css" />
+
   </head>
   <body>
         <form accept-charset="UTF-8" id="new_shipment">
@@ -17,8 +18,9 @@
           <div data-role="page" id="demo-page1" data-url="demo-page1">
           <div data-role="header" id="heading" class="topheader">
               <!-- <a href="#left-panel"><i class='icon-reorder'></i></a> -->
-              <!-- <a href="" onclick="invback()" style="float:left">Back</a> -->
+              
               <h1>New Shipment</h1>
+              <a href="" onclick="cancelinv()" style="float:right;">Cancel</a>
             </div><!-- /header -->
             <div role="main" class="ui-content">
             <div>
@@ -27,8 +29,14 @@
             </div>
             <div>   
                   <label for="total_pigs">Number of pigs</label>
-                  <input type="number" id="total_pigs" name="shipment[number_of_pigs]" value="1"/>
-                  <img src="images/minus.png" class="decri" onclick="decris()" /> 
+                  <!-- <input type='button' value='-' class='qtyminus' field='quantity' />
+                  <input type='text' name='quantity' value='0' class='qty' />
+                  <input type='button' value='+' class='qtyplus' field='quantity' /> -->
+                  
+                  <input type="number" id="total_pigs" name="shipment[number_of_pigs]" value="1" />
+                  <!-- <a href=""><span style="padding: 5px 18px; font-size: 27px; color: #333; background-color: #ccc; font-family: arial; float: left;">-</span></a>
+                  <a href=""><span style="padding: 5px 18px; font-size: 27px; color: #333; background-color: #ccc; font-family: arial; float: left;">+</span></a> -->
+                  <a href="#" onclick="decris()"><img src="images/minus.png" class="decri" /> </a>
                   <a href="#" onclick="incris()"><img src="images/plus.png" class="incri"/></a>
             </div>
             <div>        
@@ -46,17 +54,14 @@
              
             </div>
             <div data-role="footer" class="foot" data-position="fixed" style="background: url(images/Topbg.png);background-repeat: repeat;" >
-              <div class="footermenu4" onclick="db()">
-                <a href="#"><img src="images/footer-image-1.png" style="height:38px;" /></a>
+              <div class="footermenu3" onclick="db()">
+                <a href="#"><img src="images/footer-image-1.png" style="height:100%;" /></a>
               </div>
-              <div class="footermenu4" onclick="user_logout();">
-                <a href="#"><img src="images/signout.png" style="height:38px;" /></a>
+              <div class="footermenu3" onclick="user_logout();">
+                <a href="#"><img src="images/signout.png" style="height:100%;" /></a>
               </div>
-              <div class="footermenu4" onclick="cancelinv()">
-                <a href="#"><img src="images/cancel.png" style="height:38px;" /></a>
-              </div>  
-              <div class="footermenu4">
-                <a href="#left-panel"><img src="images/footer-image-5.png" style="height:38px;" /></a>
+              <div class="footermenu3">
+                <a href="#left-panel"><img src="images/footer-image-5.png" style="height:100%;" /></a>
               </div>       
             </div>
             <div data-role="panel" data-transition="slide" data-position="right" id="left-panel">

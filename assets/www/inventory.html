@@ -21,9 +21,8 @@
       <div data-role="page" id="demo-page1" data-url="demo-page1" >
         <div data-role="header" id="heading" class="topheader">
           <!-- <a href="#left-panel"><i class='icon-reorder'></i></a> -->
-          <!-- <a href="" onclick="invback()" style="float:left">Back</a> -->
           <h1>Daily Inventory</h1>
-          
+          <a style="float:right;" href="" onclick="cancelinv()">Cancel</a>
           <div class="detail_db_inv">
           <div>
             <span class="spaninv">Date</span>
@@ -70,10 +69,10 @@
                 <li data-role="fieldcontain">
                   <fieldset data-role="controlgroup">
                   <label for="death">Any pig deaths?</label>
-                      <input type="radio" name="radio-choice" id="radio-choice-1" value="yes" checked="checked" />
+                      <input type="radio" name="radio-choice" id="radio-choice-1" value="yes" />
                       <label for="radio-choice-1">Yes</label>
 
-                      <input type="radio" name="radio-choice" id="radio-choice-2" value="no"  />
+                      <input type="radio" name="radio-choice" id="radio-choice-2" value="no" checked="checked"  />
                       <label for="radio-choice-2">No</label>
                   </fieldset>
                 </li>
@@ -85,17 +84,14 @@
               
             </div>
             <div data-role="footer" class="foot" data-position="fixed" style="background: url(images/Topbg.png);background-repeat: repeat;" >
-              <div class="footermenu4" onclick="db()">
-                <a href="#"><img src="images/footer-image-1.png" style="height:38px;" /></a>
+              <div class="footermenu3" onclick="db()">
+                <a href="#"><img src="images/footer-image-1.png" style="height:100%;" /></a>
               </div>
-              <div class="footermenu4" onclick="user_logout();">
-                <a href="#"><img src="images/signout.png" style="height:38px;" /></a>
-              </div>
-              <div class="footermenu4" onclick="cancelinv()">
-                <a href="#"><img src="images/cancel.png" style="height:38px;" /></a>
-              </div>  
-              <div class="footermenu4">
-                <a href="#left-panel"><img src="images/footer-image-5.png" style="height:38px;" /></a>
+              <div class="footermenu3" onclick="user_logout();">
+                <a href="#"><img src="images/signout.png" style="height:100%;" /></a>
+              </div> 
+              <div class="footermenu3">
+                <a href="#left-panel"><img src="images/footer-image-5.png" style="height:100%;" /></a>
               </div>       
             </div>
             <!-- <div data-role="footer" style="text-align: center;" >
@@ -112,8 +108,8 @@
           <div data-role="page" id="demo-page2" data-url="demo-page2" >
             <div data-role="header" id="heading" class="topheader" >
               <!-- <a href="#left-panel"><i class='icon-reorder'></i></a> -->
-              <a href="" onclick="invback()" style="float:left">Back</a>
               <h1>Daily Inventory</h1>
+              <a href="" onclick="cancelinv()" style="float:right">Cancel</a>
             </div><!-- /header -->
             <div role="main" class="ui-content">
             <div>
@@ -130,17 +126,14 @@
             </div>
             
             <div data-role="footer" class="foot" data-position="fixed" style="background: url(images/Topbg.png);background-repeat: repeat;" >
-              <div class="footermenu4" onclick="db()">
-                <a href="#"><img src="images/footer-image-1.png" style="height:38px;" /></a>
+              <div class="footermenu3" onclick="db()">
+                <a href="#"><img src="images/footer-image-1.png" style="height:100%;" /></a>
               </div>
-              <div class="footermenu4" onclick="user_logout();">
-                <a href="#"><img src="images/signout.png" style="height:38px;" /></a>
-              </div>
-              <div class="footermenu4" onclick="cancelinv()">
-                <a href="#"><img src="images/cancel.png" style="height:38px;" /></a>
+              <div class="footermenu3" onclick="user_logout();">
+                <a href="#"><img src="images/signout.png" style="height:100%;" /></a>
               </div>  
-              <div class="footermenu4">
-                <a href="#left-panel"><img src="images/footer-image-5.png" style="height:38px;" /></a>
+              <div class="footermenu3">
+                <a href="#left-panel"><img src="images/footer-image-5.png" style="height:100%;" /></a>
               </div>       
             </div>
             <div data-role="panel" data-transition="slide" data-position="right" id="left-panel">
@@ -154,8 +147,9 @@
           <div data-role="page" id="demo-page2a" data-url="demo-page2a" >
             <div data-role="header" id="heading" class="topheader" >
               <!-- <a href="#left-panel"><i class='icon-reorder'></i></a> -->
-              <a href="" onclick="invback()" style="float:left">Back</a>
+              
               <h1>Daily Inventory</h1>
+              <a href="#" onclick="invback()" style="float:left">Back</a>
             </div><!-- /header -->
             <div role="main" class="ui-content">
              <ul data-role="listview" data-inset="true">
@@ -171,17 +165,14 @@
             </div>
             
             <div data-role="footer" class="foot" data-position="fixed" style="background: url(images/Topbg.png);background-repeat: repeat;" >
-              <div class="footermenu4" onclick="db()">
-                <a href="#"><img src="images/footer-image-1.png" style="height:38px;" /></a>
+              <div class="footermenu3" onclick="db()">
+                <a href="#"><img src="images/footer-image-1.png" style="height:100%;" /></a>
               </div>
-              <div class="footermenu4" onclick="user_logout();">
-                <a href="#"><img src="images/signout.png" style="height:38px;" /></a>
+              <div class="footermenu3" onclick="user_logout();">
+                <a href="#"><img src="images/signout.png" style="height:100%;" /></a>
               </div>
-              <div class="footermenu4" onclick="cancelinv()">
-                <a href="#"><img src="images/cancel.png" style="height:38px;" /></a>
-              </div>  
-              <div class="footermenu4">
-                <a href="#left-panel"><img src="images/footer-image-5.png" style="height:38px;" /></a>
+              <div class="footermenu3">
+                <a href="#left-panel"><img src="images/footer-image-5.png" style="height:100%;" /></a>
               </div>       
             </div>
             <div data-role="panel" data-transition="slide" data-position="right"  id="left-panel">
@@ -194,10 +185,10 @@
           </div>
           <div data-role="page" id="demo-page3" data-url="demo-page3">
             <div data-role="header" id="heading" class="topheader">
-              <a href="" onclick="invback()" style="float:left">Back</a>
+              
               <!-- <a href="#left-panel"><i class='icon-reorder'></i></a> -->
               <h1>Daily Inventory</h1>
-              
+              <a href="" onclick="cancelinv()" style="float:right">Cancel</a>
             </div><!-- /header -->
             <div role="main" class="ui-content">
               <ul data-role="listview" data-inset="true" id="run">
@@ -219,17 +210,14 @@
             </div>
             
             <div data-role="footer" class="foot" data-position="fixed" style="background: url(images/Topbg.png);background-repeat: repeat;" >
-              <div class="footermenu4" onclick="db()">
-                <a href="#"><img src="images/footer-image-1.png" style="height:38px;" /></a>
+              <div class="footermenu3" onclick="db()">
+                <a href="#"><img src="images/footer-image-1.png" style="height:100%;" /></a>
               </div>
-              <div class="footermenu4" onclick="user_logout();">
-                <a href="#"><img src="images/signout.png" style="height:38px;" /></a>
+              <div class="footermenu3" onclick="user_logout();">
+                <a href="#"><img src="images/signout.png" style="height:100%;" /></a>
               </div>
-              <div class="footermenu4" onclick="cancelinv()">
-                <a href="#"><img src="images/cancel.png" style="height:38px;" /></a>
-              </div>  
-              <div class="footermenu4">
-                <a href="#left-panel"><img src="images/footer-image-5.png" style="height:38px;" /></a>
+              <div class="footermenu3">
+                <a href="#left-panel"><img src="images/footer-image-5.png" style="height:100%;" /></a>
               </div>       
             </div>
             <div data-role="panel" data-transition="slide" data-position="right" id="left-panel">
@@ -243,9 +231,9 @@
           <div data-role="page" id="demo-page4" data-url="demo-page4" > 
             <div data-role="header" id="heading" class="topheader">
               <!-- <a href="#left-panel"><i class='icon-reorder'></i></a> -->
-              <a href="" onclick="invback()" style="float:left">Back</a>
+              
               <h1>Daily Inventory</h1>
-             
+              <a href="" onclick="cancelinv()" style="float:right">Cancel</a>
             </div><!-- /header --> 
             <div role="main" class="ui-content">
               <div>
@@ -262,17 +250,14 @@
             </div>
            
             <div data-role="footer" class="foot" data-position="fixed" style="background: url(images/Topbg.png);background-repeat: repeat;" >
-              <div class="footermenu4" onclick="db()">
-                <a href="#"><img src="images/footer-image-1.png" style="height:38px;" /></a>
+              <div class="footermenu3" onclick="db()">
+                <a href="#"><img src="images/footer-image-1.png" style="height:100%;" /></a>
               </div>
-              <div class="footermenu4" onclick="user_logout();">
-                <a href="#"><img src="images/signout.png" style="height:38px;" /></a>
+              <div class="footermenu3" onclick="user_logout();">
+                <a href="#"><img src="images/signout.png" style="height:100%;" /></a>
               </div>
-              <div class="footermenu4" onclick="cancelinv()">
-                <a href="#"><img src="images/cancel.png" style="height:38px;" /></a>
-              </div>  
-              <div class="footermenu4">
-                <a href="#left-panel"><img src="images/footer-image-5.png" style="height:38px;" /></a>
+              <div class="footermenu3">
+                <a href="#left-panel"><img src="images/footer-image-5.png" style="height:100%;" /></a>
               </div>       
             </div>
             <div data-role="panel" data-transition="slide" data-position="right" id="left-panel">
@@ -286,9 +271,9 @@
           <div data-role="page" id="demo-page4a" data-url="demo-page4a" > 
             <div data-role="header" id="heading" class="topheader">
               <!-- <a href="#left-panel"><i class='icon-reorder'></i></a> -->
-              <a href="" onclick="invback()" style="float:left">Back</a>
+              
               <h1>Daily Inventory</h1>
-             
+             <a href="" onclick="cancelinv()" style="float:right">Cancel</a>
             </div> 
             <div role="main" class="ui-content">
               <ul data-role="listview" data-inset="true" id="dosage_list">
@@ -303,17 +288,14 @@
             </div>
            
             <div data-role="footer" class="foot" data-position="fixed" style="background: url(images/Topbg.png);background-repeat: repeat;" >
-              <div class="footermenu4" onclick="db()">
-                <a href="#"><img src="images/footer-image-1.png" style="height:38px;" /></a>
+              <div class="footermenu3" onclick="db()">
+                <a href="#"><img src="images/footer-image-1.png" style="height:100%;" /></a>
               </div>
-              <div class="footermenu4" onclick="user_logout();">
-                <a href="#"><img src="images/signout.png" style="height:38px;" /></a>
+              <div class="footermenu3" onclick="user_logout();">
+                <a href="#"><img src="images/signout.png" style="height:100%;" /></a>
               </div>
-              <div class="footermenu4" onclick="cancelinv()">
-                <a href="#"><img src="images/cancel.png" style="height:38px;" /></a>
-              </div>  
-              <div class="footermenu4">
-                <a href="#left-panel"><img src="images/footer-image-5.png" style="height:38px;" /></a>
+              <div class="footermenu3">
+                <a href="#left-panel"><img src="images/footer-image-5.png" style="height:100%;" /></a>
               </div>       
             </div>
             <div data-role="panel" data-transition="slide" data-position="right" id="left-panel">
@@ -327,9 +309,9 @@
           <div data-role="page" id="demo-page5" data-url="demo-page5" > 
             <div data-role="header" id="heading" class="topheader">
               <!-- <a href="#left-panel"><i class='icon-reorder'></i></a> -->
-              <a href="" onclick="invback()" style="float:left">Back</a>
-              <h1>Daily Inventory</h1>
               
+              <h1>Daily Inventory</h1>
+              <a href="" onclick="cancelinv()" style="float:right">Cancel</a>
             </div> 
             <div role="main" class="ui-content">
               <ul data-role="listview" data-inset="true" id="dosage_list">
@@ -348,17 +330,14 @@
             </div>
             
             <div data-role="footer" class="foot" data-position="fixed" style="background: url(images/Topbg.png);background-repeat: repeat;" >
-              <div class="footermenu4" onclick="db()">
-                <a href="#"><img src="images/footer-image-1.png" style="height:38px;" /></a>
+              <div class="footermenu3" onclick="db()">
+                <a href="#"><img src="images/footer-image-1.png" style="height:100%;" /></a>
               </div>
-              <div class="footermenu4" onclick="user_logout();">
-                <a href="#"><img src="images/signout.png" style="height:38px;" /></a>
+              <div class="footermenu3" onclick="user_logout();">
+                <a href="#"><img src="images/signout.png" style="height:100%;" /></a>
               </div>
-              <div class="footermenu4" onclick="cancelinv()">
-                <a href="#"><img src="images/cancel.png" style="height:38px;" /></a>
-              </div>  
-              <div class="footermenu4">
-                <a href="#left-panel"><img src="images/footer-image-5.png" style="height:38px;" /></a>
+              <div class="footermenu3">
+                <a href="#left-panel"><img src="images/footer-image-5.png" style="height:100%;" /></a>
               </div>       
             </div>
             <div data-role="panel" data-transition="slide" data-position="right" id="left-panel">
@@ -372,9 +351,9 @@
           <div data-role="page" id="demo-page6" data-url="demo-page6" > 
             <div data-role="header" id="heading" class="topheader">
               <!-- <a href="#left-panel"><i class='icon-reorder'></i></a> -->
-              <a href="" onclick="invback()" style="float:left">Back</a>
-              <h1>Daily Inventory</h1>
               
+              <h1>Daily Inventory</h1>
+              <a href="" onclick="cancelinv()" style="float:right;">Cancel</a>
             </div> 
             <div role="main" class="ui-content">
               <ul data-role="listview" data-inset="true" id="admins_list">
@@ -394,17 +373,14 @@
             </div>
             
             <div data-role="footer" class="foot" data-position="fixed" style="background: url(images/Topbg.png);background-repeat: repeat;" >
-              <div class="footermenu4" onclick="db()">
-                <a href="#"><img src="images/footer-image-1.png" style="height:38px;" /></a>
+              <div class="footermenu3" onclick="db()">
+                <a href="#"><img src="images/footer-image-1.png" style="height:100%;" /></a>
               </div>
-              <div class="footermenu4" onclick="user_logout();">
-                <a href="#"><img src="images/signout.png" style="height:38px;" /></a>
-              </div>
-              <div class="footermenu4" onclick="cancelinv()">
-                <a href="#"><img src="images/cancel.png" style="height:38px;" /></a>
-              </div>  
-              <div class="footermenu4">
-                <a href="#left-panel"><img src="images/footer-image-5.png" style="height:38px;" /></a>
+              <div class="footermenu3" onclick="user_logout();">
+                <a href="#"><img src="images/signout.png" style="height:100%;" /></a>
+              </div> 
+              <div class="footermenu3">
+                <a href="#left-panel"><img src="images/footer-image-5.png" style="height:100%;" /></a>
               </div>       
             </div>
             <div data-role="panel" data-transition="slide" data-position="right"  id="left-panel">
@@ -418,9 +394,9 @@
           <div data-role="page" id="demo-page7" data-url="demo-page7"> 
             <div data-role="header" id="heading" class="topheader">
               <!-- <a href="#left-panel" data-transition="slide"><i class='icon-reorder'></i></a> -->
-              <a href="" onclick="invback()" style="float:left">Back</a>
-              <h1>Daily Inventory</h1>
               
+              <h1>Daily Inventory</h1>
+              <a href="" onclick="cancelinv()" style="float:right">Cancel</a>
             </div>
             <div role="main" class="ui-content">
               <ul data-role="listview" data-inset="true">
@@ -440,17 +416,14 @@
             </div>
             
             <div data-role="footer" class="foot" data-position="fixed" style="background: url(images/Topbg.png);background-repeat: repeat;" >
-              <div class="footermenu4" onclick="db()">
-                <a href="#"><img src="images/footer-image-1.png" style="height:38px;" /></a>
+              <div class="footermenu3" onclick="db()">
+                <a href="#"><img src="images/footer-image-1.png" style="height:100%;" /></a>
               </div>
-              <div class="footermenu4" onclick="user_logout();">
-                <a href="#"><img src="images/signout.png" style="height:38px;" /></a>
+              <div class="footermenu3" onclick="user_logout();">
+                <a href="#"><img src="images/signout.png" style="height:100%;" /></a>
               </div>
-              <div class="footermenu4" onclick="cancelinv()">
-                <a href="#"><img src="images/cancel.png" style="height:38px;" /></a>
-              </div>  
-              <div class="footermenu4">
-                <a href="#left-panel"><img src="images/footer-image-5.png" style="height:38px;" /></a>
+              <div class="footermenu3">
+                <a href="#left-panel"><img src="images/footer-image-5.png" style="height:100%;" /></a>
               </div>       
             </div>
             <div data-role="panel" data-transition="slide" data-position="right"  id="left-panel">
@@ -478,15 +451,20 @@
         var mm = today.getMonth()+1; //January is 0!
         var yyyy = today.getFullYear();    
         $('#report_date').val(dd + '-' + mm + '-' + yyyy); 
-        var to_rep =  window.localStorage.getItem('to_rep'); 
+        var to_rep =  window.localStorage.getItem('to_rep');
+        if (to_rep == "undefined"){ to_rep ="NA" }
         $('#run_rep').text(to_rep);
-        var to_in =  window.localStorage.getItem('to_in'); 
+        var to_in =  window.localStorage.getItem('to_in');
+        if (to_in == "undefined"){ to_in ="NA" } 
         $('#run_inven').text(to_in);
         var to_initi =  window.localStorage.getItem('to_initi');
+        if (to_initi == "undefined"){ to_initi ="NA" }
         $('#run_ini').text(to_initi);
         var to_death =  window.localStorage.getItem('to_death');
+        if (to_death == "undefined"){ to_death ="NA" }
         $('#run_death').text(to_death);
         var to_sick =  window.localStorage.getItem('to_sick');
+        if (to_sick == "undefined"){ to_sick ="NA" }
         $('#run_sick').text(to_sick);
         });
       function incri1(){

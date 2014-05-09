@@ -5,6 +5,11 @@ $(document).ready(function(){
   var leftpos=($(window).width()/2) - ($("#alertdiv").width()/2);
   $("#alertdiv").css("top", toppos).css("left",leftpos);    
   var token = window.localStorage.getItem('login_token');
+  var today = new Date();   
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
+        var yyyy = today.getFullYear();    
+        $('#shipment_date').val(dd + '-' + mm + '-' + yyyy);        
 });
 //home.html
 function delayShow() {
@@ -36,7 +41,7 @@ function user_logout() {
 //Inventory.html
 function check_pig_death(){
   if($('#radio-choice-1').is(':checked')) { 
-    //alert();
+    // alert();
     window.location ='#demo-page2'
    }
    else{
@@ -365,7 +370,8 @@ function inven(){
         window.location ='inventory.html'
         console.log(data);
         // alert(); 
-        // alert(JSON.stringify(data)); 
+        // alert(JSON.stringify(data));
+        
         window.localStorage.setItem('to_in', data.total_inventory);
         window.localStorage.setItem('to_rep', JSON.stringify(data.report_date));
         window.localStorage.setItem('to_initi', JSON.stringify(data.user_initials));
@@ -427,7 +433,7 @@ function cancelinv(){
           $('#ac').text(data.AC_power);
           $('#last_up').text('Last update on-'+ data.reported_at);
           $('#db_barn').text(data.barn_name);
-          $('#db_hog4').text(user); 
+          // $('#db_hog4').text(user); 
           if(data.system_status == "OK"){
             $("#statusimg").attr("src", "online.png");
           }
@@ -449,15 +455,3 @@ function cancelinv(){
       });
 
 }
-function incris(){
-        alert();
-        var textval = parseInt($('#total_pigs').val()) + 1;
-        $('#total_pigs').val() = textval;
-      }
-      function decris(){
-        var textval = $('#total_pigs').val()
-        if (textval>1) {
-            var res = parseInt(textval) - 1;
-            $('#total_pigs').val() = res;
-        };
-      }
